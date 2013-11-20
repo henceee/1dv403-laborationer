@@ -1,5 +1,7 @@
 "use strict";
 
+var strObj, strRepleceAsmall, strRepleceAbig;
+
 window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
@@ -8,7 +10,15 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-
+        
+        
+        strRepleceAsmall = str.replace("a", "#");
+        strRepleceAbig = strRepleceAsmall;
+        strRepleceAbig = strRepleceAbig.replace("A", "#");
+        
+        
+        return strRepleceAbig;
+        
 
 
 
