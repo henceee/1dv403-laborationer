@@ -1,6 +1,6 @@
 "use strict";
 
-var strObj, strRepleceAsmall, strRepleceAbig;
+var strobj, replacebigA, replacesmallA;
 
 window.onload = function(){
 
@@ -9,17 +9,39 @@ window.onload = function(){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
+	    
+	  
+	    try{
+	    
+	    strobj = new String(str);
+	    
+    	    if(str === ""){
+    	        
+    	        
+    	        throw new Error();
+    	        
+    	    }
+	        
+	    }
         
+       
+  
+        catch (e) {
         
-        strRepleceAsmall = str.replace("a", "#");
-        strRepleceAbig = strRepleceAsmall;
-        strRepleceAbig = strRepleceAbig.replace("A", "#");
+        alert("Du glömde skriva i något!");
         
-        
-        return strRepleceAbig;
-        
-
+        }
+    	
+    
+	    replacebigA = str.replace(/A/g,'#');
+	    
+	    replacesmallA = replacebigA.replace(/a/g,'#');
+	    
+	    
+	    
+	    
+	    return replacesmallA;
+	    
 
 
 
