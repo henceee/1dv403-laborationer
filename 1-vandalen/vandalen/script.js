@@ -1,11 +1,22 @@
 "use strict";
 
+
 var makePerson = function(persArr){
 
+    var result = {};
 
-	// Din kod här...
+    //här ska det implementeras
 
+    return result;
+    
 
-    //Testing testing. Provar att köra lokalt istället för via C9.
+    
 }
 
+var data = [{ name: "John Häggerud", age: 37 }, [{ name: "Johan Leitet", age: 36 }], [{ name: "Mats Loock", age: 46 }]];
+
+
+var result = makePerson(data);
+
+
+console.log(result);
