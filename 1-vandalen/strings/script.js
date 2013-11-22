@@ -1,6 +1,6 @@
 "use strict";
 
-var strobj, replacebigA, replacesmallA;
+var strobj, replaceA, reg;
 
 window.onload = function(){
 
@@ -14,7 +14,7 @@ window.onload = function(){
 	    try{
 	    
 	    strobj = new String(str);
-	    
+	   
     	    if(str === ""){
     	        
     	        
@@ -28,19 +28,38 @@ window.onload = function(){
   
         catch (e) {
         
-        alert("Du glömde skriva i något!");
+            alert("Du glömde skriva i något!");
         
         }
+        
     	
-    
-	    replacebigA = str.replace(/A/g,'#');
-	    
-	    replacesmallA = replacebigA.replace(/a/g,'#');
 	    
 	    
+	    replaceA = str.replace(/a/gi,'#');
+	    
+	   
+	    var nustr = new String(); // nustr läses som new string, vill inte använda reserverade orden.
+	    
+	    for (var i=0; i < replaceA.length; i++){
+	        
+	            
+	        if(replaceA[i] === replaceA[i].toLowerCase()){
+	            console.log(replaceA[i]);
+	            nustr += replaceA[i].toUpperCase();
+	        }
+	        
+	        else if(replaceA[i] === replaceA[i].toUpperCase()){
+	            console.log(replaceA[i]);
+	            nustr += replaceA[i].toLowerCase();
+	        }
+	        
+	        console.log(nustr);
+	    }
 	    
 	    
-	    return replacesmallA;
+	    
+	    
+	    return nustr;
 	    
 
 
