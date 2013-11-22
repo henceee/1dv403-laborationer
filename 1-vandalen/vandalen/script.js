@@ -31,19 +31,25 @@ var makePerson = function (persArr) {
 
     var minAge = 36;
     var maxAge = 46;
+    var averageAge,names;
     
     this.getName = function() {return name;};
-    this.setName = function (_name) { name = _name; };
+    this.setName = function(_name) { name = _name; };
         
-    this.getMinAge = function () { return minAge; };
-    this.getMaxAge = function () { return maxAge; };
+    this.getMinAge = function() { return minAge; };
+    this.getMaxAge = function() { return maxAge; };
     
-    this.getAge = function () { return age; };
-    this.setAge = function (_age) {age = _age;};
-        
+    this.getAge = function() { return age; };
+    this.setAge = function(_age) {age = _age;};
+    
+    this.getAverageAge = function() { return averageAge; };
+    this.setAverageAge = function () { return (persArr[1].age + persArr[2].age + persArr[3].age) / persArr.length;};
+    
+    this.setName(name);
+    this.setAge(age);
     
 
-    var result = {};
+    var result = {minAge: persArr.setMinAge, maxAge: persArr.setMaxAge, AverageAge: persArr.setAverageAge};
 
   
     
