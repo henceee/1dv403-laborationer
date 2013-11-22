@@ -1,22 +1,51 @@
 "use strict";
 
 
+
+// inkopierat som referenspunkt
+
+/*
+function Player(name, age, handedness){
+	var score = 0;
+	
+	this.getName = function(){return name;};
+	this.setName = function(_name){name = _name;};
+	
+	this.getAge = function(){return age;};
+	this.setAge = function(_age){age = _age;};
+	
+	this.getHandedness = function(){return name;};
+	this.setHandedness = function(_handedness){handedness = _handedness;};
+	
+	this.getScore = function(){return score;};
+	
+	this.addPoint = function(point){
+			if((!isNaN(point)) && (point > 0)){
+				score += point;
+			}
+	};	
+}
+*/
+
 var makePerson = function (persArr) {
 
-    this.setName = function () { return name };
-    this.getName = function (_name) { name = _name };
-    this.setAge = function () { return age };
-    this.getAge = function (_age) { age = _age };
+    var minAge = 36;
+    var maxAge = 46;
+    
+    this.getName = function() {return name;};
+    this.setName = function (_name) { name = _name; };
+        
+    this.getMinAge = function () { return minAge; };
+    this.getMaxAge = function () { return maxAge; };
+    
+    this.getAge = function () { return age; };
+    this.setAge = function (_age) {age = _age;};
+        
     
 
     var result = {};
 
-    this.setName(name);
-    this.setAge(age);
-
-    return result;
-    
-
+  
     
 }
 
@@ -27,3 +56,5 @@ var result = makePerson(data);
 
 
 console.log(result);
+
+
