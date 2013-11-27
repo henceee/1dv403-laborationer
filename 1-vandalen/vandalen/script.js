@@ -2,65 +2,51 @@
 
 
 
-// inkopierat som referenspunkt
 
-/*
-function Player(name, age, handedness){
-	var score = 0;
-	
-	this.getName = function(){return name;};
-	this.setName = function(_name){name = _name;};
-	
-	this.getAge = function(){return age;};
-	this.setAge = function(_age){age = _age;};
-	
-	this.getHandedness = function(){return name;};
-	this.setHandedness = function(_handedness){handedness = _handedness;};
-	
-	this.getScore = function(){return score;};
-	
-	this.addPoint = function(point){
-			if((!isNaN(point)) && (point > 0)){
-				score += point;
-			}
-	};	
-}
-*/
 
-var makePerson = function (persArr) {
+var makePerson = function (personarr){
 
-    var minAge = 36;
-    var maxAge = 46;
-    var averageAge,names;
-    
-    this.getName = function() {return name;};
-    this.setName = function(_name) { name = _name; };
-        
-    this.getMinAge = function() { return minAge; };
-    this.getMaxAge = function() { return maxAge; };
-    
-    this.getAge = function() { return age; };
-    this.setAge = function(_age) {age = _age;};
-    
-    this.getAverageAge = function() { return averageAge; };
-    this.setAverageAge = function () { return (persArr[1].age + persArr[2].age + persArr[3].age) / persArr.length;};
-    
-    this.setName(name);
-    this.setAge(age);
-    
+//    var minAge = 36;
+//    var maxAge = 46;
+//    var averageAge;
 
-    var result = {minAge: persArr.setMinAge, maxAge: persArr.setMaxAge, AverageAge: persArr.setAverageAge};
+    console.log(typeof personarr);
 
-  
-    
-}
+    //console.log(names);
+
+    //this.getNames = function () { return names; };
+    //this.setName = function (_names) { names = _names; };
+
+    //this.getMinAge = function () { return minAge; };
+    //this.getMaxAge = function () { return maxAge; };
+
+    //this.getAge = function () { return age; };
+    //this.setAge = function (_age) { age = _age; };
+
+    //this.getAverageAge = function () { return averageAge; };
+    //this.setAverageAge = function () { return (data[0].age + data[1].age + data[2].age) / data.length; };
+
+    //this.setName(name);
+    //this.setAge(age);
+
+
+    //var result = {  };
+
+
+
+};
+
+
 
 var data = [{ name: "John Häggerud", age: 37 }, { name: "Johan Leitet", age: 36 }, { name: "Mats Loock", age: 46 }];
 
 
+
+console.log(data[0].name);
+
 var result = makePerson(data);
 
 
-console.log(result);
+//console.log(result);
 
 
