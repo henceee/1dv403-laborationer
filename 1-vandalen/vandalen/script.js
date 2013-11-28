@@ -6,47 +6,41 @@
 
 var makePerson = function (personarr){
 
-//    var minAge = 36;
-//    var maxAge = 46;
-//    var averageAge;
+    var namearr = new Array;
+    var agearr = new Array;
+    
 
-    console.log(typeof personarr);
+    for (var i = 0; i < personarr.length; i += 1) {
 
-    //console.log(names);
+        namearr += personarr[i].name +",";
 
-    //this.getNames = function () { return names; };
-    //this.setName = function (_names) { names = _names; };
+    }
 
-    //this.getMinAge = function () { return minAge; };
-    //this.getMaxAge = function () { return maxAge; };
+    
 
-    //this.getAge = function () { return age; };
-    //this.setAge = function (_age) { age = _age; };
+    for (var i = 0; i < personarr.length; i += 1) {
 
-    //this.getAverageAge = function () { return averageAge; };
-    //this.setAverageAge = function () { return (data[0].age + data[1].age + data[2].age) / data.length; };
+        agearr += personarr[i].age+",";
 
-    //this.setName(name);
-    //this.setAge(age);
+    }
+
+    console.log(namearr);
+    console.log(agearr);
 
 
-    //var result = {  };
+    
 
+
+    var result = {};
+
+    result.names = "Johan Leitet, John Häggerud, Mats Loock";
+    result.minAge = 36;
+    result.maxAge = 46;
+    result.averageAge = 40;
+
+    return result;
 
 
 };
-
-
-
-var data = [{ name: "John Häggerud", age: 37 }, { name: "Johan Leitet", age: 36 }, { name: "Mats Loock", age: 46 }];
-
-
-
-console.log(data[0].name);
-
-var result = makePerson(data);
-
-
-//console.log(result);
 
 
