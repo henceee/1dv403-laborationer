@@ -6,13 +6,13 @@
 
 var makePerson = function (personarr){
 
-    var namearr = new Array;
+    var namearr1 = new Array;
     var agearr = new Array;
-    
+    var namerarr;
 
     for (var i = 0; i < personarr.length; i += 1) {
 
-        namearr += personarr[i].name +",";
+        namearr1 += personarr[i].name +",";
 
     }
 
@@ -24,10 +24,11 @@ var makePerson = function (personarr){
 
     }
 
-    console.log(namearr);
-    console.log(agearr);
-
-
+    //console.log(namearr);
+    //console.log(agearr);
+    
+    
+    
     
 
 
