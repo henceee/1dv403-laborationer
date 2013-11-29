@@ -2,39 +2,46 @@
 
 
 
-
-
 var makePerson = function (personarr){
 
-    var namearr1 = new Array;
     var agearr = new Array;
-    var namerarr;
+    var namearr1 = new Array;
+    
+    
 
     for (var i = 0; i < personarr.length; i += 1) {
 
-        namearr1 += personarr[i].name +",";
+        
+        namearr1 += personarr[i].name;
 
     }
 
     
 
+    namarr1 = namearr1.join();
+
+    namearr1.sort(function (Johan, John, Mats) { return Johan.localCompare(John)});
+    
+
     for (var i = 0; i < personarr.length; i += 1) {
 
-        agearr += personarr[i].age+",";
+        agearr += personarr[i].age + " ";
 
     }
 
-    //console.log(namearr);
-    //console.log(agearr);
     
     
+    agearr.sort();
+
+    console.log(agearr);
     
+
     
 
 
     var result = {};
 
-    result.names = "Johan Leitet, John Häggerud, Mats Loock";
+    result.names = namearr1;
     result.minAge = 36;
     result.maxAge = 46;
     result.averageAge = 40;
