@@ -4,49 +4,49 @@
 
 var makePerson = function (personarr){
 
-    var agearr = new Array;
-    var namearr1 = new Array;
-    
-    
-
-    for (var i = 0; i < personarr.length; i += 1) {
-
         
-        namearr1 += personarr[i].name;
+        var names = [];
+        
+        for (var i = 0; i < personarr.length; i += 1) {
+        
+            var person = personarr[i];
+            names.push(person.name);
+        }
+        
+        names.sort(function (s0, s1) { 
 
-    }
+            return s0.localeCompare(s1); 
 
-    
+        }); 
 
-    namarr1 = namearr1.join();
+            
+        var age = []
 
-    namearr1.sort(function (Johan, John, Mats) { return Johan.localCompare(John)});
-    
+        for (var i = 0; i < personarr.length; i += 1) {
 
-    for (var i = 0; i < personarr.length; i += 1) {
+            var yearsold = personarr[i];
+            age.push(yearsold.age);
 
-        agearr += personarr[i].age + " ";
+        }
 
-    }
+        age = age.sort();
 
-    
-    
-    agearr.sort();
+        console.log(age[0],age[1], age[2]);
 
-    console.log(agearr);
-    
+        var minAge = age[0];
 
-    
+        var averageAge = Math.round(+(age[0] + age[1] + age[2]) / +(age.length))
 
+        var maxAge = age.pop();
 
-    var result = {};
+        var result = {};
 
-    result.names = namearr1;
-    result.minAge = 36;
-    result.maxAge = 46;
-    result.averageAge = 40;
+        result.names = names[0] + ", " + names[1] + ", " + names[2];
+        result.minAge = minAge;
+        result.maxAge = maxAge;
+        result.averageAge = averageAge;
 
-    return result;
+        return result;
 
 
 };
