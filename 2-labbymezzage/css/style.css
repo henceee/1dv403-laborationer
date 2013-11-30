@@ -1,0 +1,13 @@
+html {
+
+    background-color: #6abbe0;
+
+}
+
+#header {
+
+    float: left;
+    background: url("../pics/labbymezzage.jpg") no-repeat;
+    width: 100%;
+
+}

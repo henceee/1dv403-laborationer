@@ -23,13 +23,13 @@ window.onload = function () {
             
     };
 
-    var mess = new Message("Test", new Date());
+    //var mess = new Message("Test", new Date());
 
-    alert(mess);
+    //alert(mess);
 
-    MessageBoard.messages.push(mess);
+    //MessageBoard.messages.push(mess);
 
-    alert(MessageBoard.messages[0].getText());
+    //alert(MessageBoard.messages[0].getText());
     
 
             
