@@ -1,4 +1,4 @@
-function Message(massage, date) {
+function Message(message, date) {
 
     this.getText = function () {
 
@@ -16,9 +16,8 @@ function Message(massage, date) {
     }
 
     this.setDate = function (_date) {
-
-        _date = (new Date());
-
+        
+        _date = date;
 
     }
 
