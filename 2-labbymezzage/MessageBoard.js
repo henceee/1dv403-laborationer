@@ -1,20 +1,19 @@
 window.onload = function () {
 
-    ////Test steg 1
-
-    //var mess = new Message("Test", new Date());
-    //alert(mess);
-
-    //alert(mess.getText());
-    //mess.setText("En annan text!!");
-    //alert(mess);
+    
 
     var MessageBoard = {
-
+        
         messages: [],
 
-        init: function (e) {
-        
+
+        init: function (text) {
+
+                                           
+            var mess = new Message((text), new Date());
+
+            MessageBoard.messages.push(mess);
+
             
         
         }
@@ -23,15 +22,59 @@ window.onload = function () {
             
     };
 
-    //var mess = new Message("Test", new Date());
 
-    //alert(mess);
-
-    //MessageBoard.messages.push(mess);
-
-    //alert(MessageBoard.messages[0].getText());
+    
+    
     
 
+    var p = document.querySelector("#value");
+    var msgstring = document.querySelector("#message");
+    var write = document.querySelector("#write");
+
+    write.addEventListener("click", MessageBoard.init(msgstring.value), false);
+
+    console.log(MessageBoard.messages[0]);
+
+
+
+    //------------------------STRÄNGAR--------------------------------------------------------------s
+    //// Kod för att hantera utskrift och inmatning. Denna ska du inte behöva förändra
+    //var p = document.querySelector("#value"); // Referens till DOM-noden med id="#value"
+    //var input = document.querySelector("#string");
+    //var submit = document.querySelector("#send");
+
+    //// Vi kopplar en eventhanterare till formulärets skickaknapp som kör en anonym funktion.
+    //submit.addEventListener("click", function(e){
+    //    e.preventDefault(); // Hindra formuläret från att skickas till servern. Vi hanterar allt på klienten.
+
+    //    p.classList.remove( "error");
+
+    //    try {
+    //        var answer = convertString(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
+    //        p.innerHTML = answer;		// Skriver ut texten från arrayen som skapats i funktionen.	
+    //    } catch (error){
+    //        p.classList.add( "error"); // Växla CSS-klass, IE10+
+    //        p.innerHTML = error.message;
+    //    }
+    //------------------------------STRÄNGAR INDEX -------------------------------------------------
+    //<h1>Strängomvandling</h1>
+    //    <a href="../index.html"><--- Tillbaka</a>
+ 	//	<form>
+ 	//		<input type="text" id="string" /> <input id="send" type="submit" value="omvandla..." />
+ 	//		<p id="value"></p>
+	//	</form>       
+    
+    //------------------------------------ MIN INDEX -----------------------------------------------
+
+    //    <div id="message">
+    //       <form>       
+    //           <textarea name="message" cols="100" rows="10"
+    //    id="msg">
+    //    </textarea>
+    //    <input id="write" type="submit" name="Submit" value="Skriv">
+    //    <p id="value"></p>
+    //</form>
+    //</div>
             
     
 };
