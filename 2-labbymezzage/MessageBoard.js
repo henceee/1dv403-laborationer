@@ -74,17 +74,17 @@ var MessageBoard = {
 
         present.appendChild(text);
 
+
         var removebutton = document.createElement("button");
 
-        var removetext = document.createTextNode("Radera");
-
+        removebutton.setAttribute("value", "Radera");
+       
         removebutton.appendChild(removetext);
 
         present.appendChild(removebutton);
 
-        var datebutton = document.createElement("button");
 
-        var datetext = document.createTextNode("Tid");
+        var datebutton = document.createElement("button");
 
         datebutton.appendChild(datetext);
 
