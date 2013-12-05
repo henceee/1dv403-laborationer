@@ -31,7 +31,9 @@ function Message(message, date) {
 
     Message.prototype.getHTMLText = function () {
 
-        //...
+        var message = this.getText();
+
+        return message.replace(/[\n\r]/g, "<br />");
     }
 
     Message.prototype.getDateText = function () {

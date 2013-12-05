@@ -39,7 +39,7 @@ html {
 
     width: 97%;
     margin-left: 1%;
-    margin-top: 5%;
+    border: none;
     
     
 }
@@ -52,3 +52,24 @@ html {
    margin-right: 1%;
 
 }
+
+#present {
+
+    background-color: #AFF28D;
+    border: 1px double gray;
+    width: 97%;
+    margin-left: 1%;
+
+}
+
+#count {
+
+    background-color: #FFF;
+    width: 97.3%;
+    margin-left: 1%;
+    margin-bottom: -1.5px;
+    border-bottom: 1px double gray;
+}
+
+    
+
