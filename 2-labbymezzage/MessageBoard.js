@@ -1,4 +1,42 @@
-window.onload = function () {
+
+var MessageBoard = {
+
+    messages: [],
+    init: function(){
+        var p = document.querySelector("#value");
+        var msgstring = document.querySelector("#msg");
+        var write = document.querySelector("#write");
+        var present = document.querySelector("#present");
+
+        console.log(present);
+
+
+        write.onclick = function () {
+            var text = msgstring.value;
+ 
+
+            var mess = new Message(text, new Date());
+
+            console.log(mess.getText());
+
+            console.log(MessageBoard.messages.length);
+            MessageBoard.messages.push(mess);
+            console.log(MessageBoard.messages.length);
+
+            present.innerHTML = "";
+
+            
+
+           
+        }
+    
+    }
+
+};
+window.onload = MessageBoard.init;
+
+
+/*window.onload = function () {
 
     
 
@@ -9,16 +47,13 @@ window.onload = function () {
 
         init: function (text) {
 
-                                           
+            console.log(text);
             var mess = new Message((text), new Date());
 
             MessageBoard.messages.push(mess);
-
-            
-        
+ 
         }
 
-    
             
     };
 
@@ -33,7 +68,7 @@ window.onload = function () {
 
     write.addEventListener("click", MessageBoard.init(msgstring.value), false);
 
-    console.log(MessageBoard.messages[0]);
+    console.log(MessageBoard.messages[0]);*/
 
 
 
@@ -77,4 +112,4 @@ window.onload = function () {
     //</div>
             
     
-};
+//};
