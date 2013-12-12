@@ -42,5 +42,36 @@ function Message(message, date) {
 
         var date = this.getDate();
 
+        var day = [];
+        day[0] = "måndagen";
+        day[1] = "tisdagen";
+        day[2] = "onsdagen";
+        day[3] = "torsdagen";
+        day[4] = "fredagen";
+        day[5] = "lördagen";
+        day[6] = "söndagen";
+
+        var d = day[date.getDay()];
+
+        var month = [];
+
+        month[0] = "januari";
+        month[1] = "februari";
+        month[2] = "mars";
+        month[3] = "april";
+        month[4] = "maj";
+        month[5] = "juni";
+        month[6] = "juli";
+        month[7] = "augusti";
+        month[8] = "september";
+        month[9] = "oktober";
+        month[10] = "november";
+        month[11] = "december";
+
+        var m = month[date.getMonth()];
+
+        var thedate = "Inlägget skapades den " +d+" " + date.getUTCDate() + " " +m + " " +date.getUTCFullYear();
+
+        return thedate;
     }
 }
