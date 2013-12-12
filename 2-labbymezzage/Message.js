@@ -1,10 +1,12 @@
+"use strict";
+
 function Message(message, date) {
 
     this.getText = function () {
 
         return message;
 
-        //var that = this; // <= kanske kommer att behövas här sen.
+        
     }
 
     this.setText = function (_text) {
@@ -38,6 +40,7 @@ function Message(message, date) {
 
     Message.prototype.getDateText = function () {
 
+        var date = this.getDate();
 
     }
 }

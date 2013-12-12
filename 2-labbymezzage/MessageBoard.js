@@ -1,3 +1,5 @@
+"use strict";
+
 var MessageBoard = {
 
     messages: [],
@@ -9,6 +11,8 @@ var MessageBoard = {
         var write = document.querySelector("#write");
 
         var counter = document.querySelector("#count");
+
+        counter.innerHTML = "";
 
         var countertext = document.createElement("p");
                                 
@@ -28,9 +32,8 @@ var MessageBoard = {
             
             MessageBoard.messages.push(mess);
 
-            //console.log(MessageBoard.messages);
-
-            
+            console.log(MessageBoard.messages);
+                        
             countertext.innerHTML = "";
 
             countertext.innerHTML = ("Antal meddelande: " + MessageBoard.messages.length);
@@ -59,6 +62,8 @@ var MessageBoard = {
         for (var i = 0; i < MessageBoard.messages.length; ++i) {
 
             MessageBoard.renderMessage(i);
+
+            //kallar på renderMessage som renderar alla meddelanden
         }
 
     },
@@ -95,7 +100,24 @@ var MessageBoard = {
 
                 MessageBoard.renderMessages();
 
-                // Återställa räknare?? Blir fel med MessageID eller? Kan ej ta bort flera.. Om bara ett meddelande kvar.
+                var counter = document.querySelector("#count");
+
+                counter.innerHTML = "";
+
+                //var countertext = counter.getElementsByTagName("p");
+                //Uncaught NotFoundError: An attempt was made to reference a Node in a context where it does not exist. 
+
+                //Använda replacechild? Men kan ju inte få tag i p taggen :(
+                
+
+                var countertext = document.createElement("p");
+
+                
+                countertext.innerHTML = ("Antal meddelande: " + MessageBoard.messages.length);
+
+                counter.appendChild(countertext);
+
+                                
             }
                 
             }
@@ -114,7 +136,11 @@ var MessageBoard = {
 
                 dateelements[i].onclick = function () {
 
-                    //alert(MessageBoard.messages[i].getDate());
+                    var date = MessageBoard.messages[MessageID].getDateText();
+
+                    alert(date);
+
+
 
                 }
 
