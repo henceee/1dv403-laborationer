@@ -1,0 +1,22 @@
+#memory {
+
+    float:left;
+    margin-left:30%;
+    margin-top: 10%;
+
+}
+
+    #memory td {
+    
+        width: 10%;
+        padding: 0,10px, 0, 0;
+    
+    }
+
+    #memory img {
+    
+    width: 110%;
+
+    }
+
+    
