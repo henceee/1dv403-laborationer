@@ -5,16 +5,61 @@ var count = 0;
 var Memory = {
 
     random: [],
+    cols: 4,
+    rows: 4,
 
     init: function () {
 
-        var randomgen = RandomGenerator.getPictureArray(4, 4);
-
-        Memory.random.push(randomgen);
-
-        console.log(Memory.random);
+        Memory.random = RandomGenerator.getPictureArray(4, 4);
         
-        var picplace = document.getElementsByClassName("bild");
+        for (var i = 0; i < Memory.rows; i += 1) {
+
+            
+
+            var trstring = document.createElement("tr");
+            trstring.id = "rad"+(i+1)
+            var memorytable = document.getElementById("memorytable");
+
+           for (var j = 0; j < Memory.cols; j += 1) {
+               
+
+                var a = document.createElement("a");
+                a.id = "piclink"+(j+1);
+                a.setAttribute("class", "piclink");
+                a.setAttribute("href", "#")
+
+                var img = document.createElement("img");
+                img.setAttribute("src", "pics/0.png");
+
+                a.appendChild(img);
+                trstring.appendChild(a);
+
+            }
+            memorytable.appendChild(trstring);
+        }
+
+        var piclinks = document.getElementsByClassName("piclink");
+
+        //console.log(piclinks);
+        //console.log(piclinks[0]);
+        //console.log(piclinks.length);
+
+        for (var k = 0; k < piclinks.length; k += 1) {
+
+            piclinks[k].onclick = function(e) {
+
+                alert("hej");                
+                
+            }
+        }
+
+
+
+        //console.log(memorytable);
+          
+       
+        
+        /*var picplace = document.getElementsByClassName("bild");
        
         console.log(picplace);
 
@@ -29,17 +74,21 @@ var Memory = {
         var piclink = document.getElementsByClassName("piclink");
 
         
-        for (var i = 0; i < piclink.length; i += 1) {
+        for (var i = 1; i < piclink.length; i += 1) {
 
             
             var klick = function (klicked) {
+
+                //var linkpicstring = "<a class='piclink' href='#'>";
+
+                //linkpicstring += "<img src='pics/" + Memory.random[0][i] + ".png' /></a>";
 
                 //Testar onclick bara
                 var linkpicstring = "<a class='piclink' href='#'><img src='pics/1.png' /></a>";
 
                 klicked.innerHTML = linkpicstring;
 
-                //Koppla till random arrayen på nåt vis? 
+                ////Koppla till random arrayen på nåt vis? 
 
                
 
@@ -59,7 +108,7 @@ var Memory = {
 
             
            
-        }
+        }*/
 
     },
 
