@@ -16,12 +16,11 @@ var Memory = {
         
         Memory.renderRows();
 
-       
     },
 
     renderRows: function () {
-        var memorytable = document.getElementById("memorytable");
 
+        var memorytable = document.getElementById("memorytable");
         memorytable.innerHTML = "";
 
         for (var i = 0; i < Memory.rows; i += 1) {
@@ -42,7 +41,7 @@ var Memory = {
     },
 
     renderImages: function(id, trstring){
-        //console.log(id);
+        
         var a = document.createElement("a");
         a.id = id;
         a.setAttribute("class", "piclink");
@@ -52,35 +51,21 @@ var Memory = {
         a.appendChild(img);
         trstring.appendChild(a);
 
-        //console.log(trstring);
-        //console.log(id);
-
-        
-
         a.onclick = function (e) {
 
             e.preventDefault();
-            count += 1;
-            //console.log("count " + count);
             Memory.flip(Memory.random[id], this);
-
             
         }
     
     },
-    
-    
-
    
     flip: function (id, clickedATag) {
                       
-
         var clickedImg = clickedATag.getElementsByTagName("img")[0];
-
         clickedImg.setAttribute("src", "pics/" + id + ".png");
-
         Memory.checkArray.push(clickedImg);
-                
+              
         switch (Memory.checkArray.length % 2) {
 
             case 0:
@@ -95,10 +80,9 @@ var Memory = {
     
     flipback: function () {
 
-              
                 var elm0src = Memory.checkArray[0].getAttribute("src");
                 var elm1src = Memory.checkArray[1].getAttribute("src");
-
+                
                 if (elm0src !== elm1src) {
 
                     Memory.checkArray[0].setAttribute("src", "pics/0.png");
@@ -113,18 +97,15 @@ var Memory = {
                 }
 
                 Memory.checkArray.splice(0, 2);
-
-                
+        
         Memory.checkifgameover()
     },
 
         checkifgameover: function () {
         
             var images = document.querySelectorAll("#memorytable a img");
-
-            console.log(images);
-
             var imgagessrc = [];
+
             for (var k = 0; k < images.length; k += 1) {
 
                 if (images[k].getAttribute("src") !== "pics/0.png") {
