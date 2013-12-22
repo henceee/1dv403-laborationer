@@ -11,9 +11,7 @@ var Memory = {
     checkArray: [],
 
     init: function () {
-
-        
-
+    
         Memory.random = RandomGenerator.getPictureArray(4, 4);
         
         Memory.renderRows();
@@ -60,55 +58,96 @@ var Memory = {
         
 
         a.onclick = function (e) {
+
             e.preventDefault();
+            count += 1;
+            //console.log("count " + count);
             Memory.flip(Memory.random[id], this);
 
-            count += 1;
-            //console.log(count);
+            
         }
     
     },
+    
+    
 
    
     flip: function (id, clickedATag) {
+                      
 
-       
         var clickedImg = clickedATag.getElementsByTagName("img")[0];
 
         clickedImg.setAttribute("src", "pics/" + id + ".png");
 
         Memory.checkArray.push(clickedImg);
-        
-
-        Memory.flipback();
                 
+        switch (Memory.checkArray.length % 2) {
+
+            case 0:
+                setTimeout(function () { Memory.flipback(); }, 1000);
+            case 2:
+                setTimeout(function () { Memory.flipback(); }, 1000);
+
+        }
                 
     },
 
+    
     flipback: function () {
 
-        console.log(Memory.checkArray[0]);
-        console.log(Memory.checkArray[1]);
-        console.log(Memory.checkArray.length);
+              
+                var elm0src = Memory.checkArray[0].getAttribute("src");
+                var elm1src = Memory.checkArray[1].getAttribute("src");
+
+                if (elm0src !== elm1src) {
+
+                    Memory.checkArray[0].setAttribute("src", "pics/0.png");
+                    Memory.checkArray[1].setAttribute("src", "pics/0.png");
+                }
+
+                if (elm0src === elm1src) {
+
+                    Memory.checkArray[0].setAttribute("src", elm0src);
+                    Memory.checkArray[1].setAttribute("src", elm1src);
+
+                }
+
+                Memory.checkArray.splice(0, 2);
+
                 
-        if (Memory.checkArray.length == 2 && Memory.checkArray[0] != Memory.checkArray[1]) {
+        Memory.checkifgameover()
+    },
+
+        checkifgameover: function () {
         
-                       
-            Memory.checkArray[0].setAttribute("src", "pics/0.png");
-            Memory.checkArray[1].setAttribute("src", "pics/0.png");
+            var images = document.querySelectorAll("#memorytable a img");
+
+            console.log(images);
+
+            var imgagessrc = [];
+            for (var k = 0; k < images.length; k += 1) {
+
+                if (images[k].getAttribute("src") !== "pics/0.png") {
+
+                    imgagessrc.push(images[k].getAttribute("src"));
+                    
+                }
+
+                if (imgagessrc.length === 16) {
+
+                    alert("Grattis, du klarade det på " + (count / 2) + " försök");
+                    
+                }
+            }
             
-            Memory.checkArray.length = 0;
-
-            console.log(Memory.checkArray.length);
-                        
+            console.log(count);
+            
         }
-
        
-    }
-   
 };
 
 window.onload = Memory.init;
+
 
 
 

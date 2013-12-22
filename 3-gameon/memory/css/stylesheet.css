@@ -23,7 +23,9 @@
 
 #memory {
 
-    width: 100%
+    margin-top: 10%;
+    width: 100%;
+    margin-left: 35%;
 }
 #memorytable{
 
@@ -31,6 +33,6 @@
 }
 
 #memorytable img {
-    width: 2.5%;
+    width: 4.5%;
 }
     
