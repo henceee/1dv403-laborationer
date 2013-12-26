@@ -53,6 +53,7 @@ var Memory = {
 
         a.onclick = function (e) {
 
+            count += 1;
             e.preventDefault();
             Memory.flip(Memory.random[id], this);
             
@@ -79,7 +80,7 @@ var Memory = {
 
     
     flipback: function () {
-
+        
                 var elm0src = Memory.checkArray[0].getAttribute("src");
                 var elm1src = Memory.checkArray[1].getAttribute("src");
                 
