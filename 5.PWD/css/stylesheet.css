@@ -13,11 +13,9 @@ body {
 
 #toolbar {
 
-    width: 110%;
-    height: 13%;  
-    /*background-color: blue;*/
-    margin-top: 60%;
-    margin-bottom: -1%;
+    width: 105%;
+    height: 10%;  
+    margin-top: 63%;
     margin-left: -0.6%;
     background: rgb(125,126,125); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
@@ -27,7 +25,6 @@ body {
     background: -ms-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
     background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
-    /*border-top: 1px solid #ffffff;*/
     -webkit-box-shadow: inset 0 0 30px #00f;
     -moz-box-shadow: inset 0 0 30px #00f;
     box-shadow: inset 0 0 30px #ffffff;
@@ -48,15 +45,14 @@ body {
 #popupdiv{
     
     width: 50%;
-    height: 70%;
+    height: 50%;
     margin-top: -60%;
-    margin-left: 20%;
+    margin-left: 10%;
     background-color: white;
     border: 2px solid rgb(59,103,158);
-    -webkit-box-shadow: 1px 0px 30px rgba(0, 0, 0, 0.28);
-    -moz-box-shadow: 1px 0px 30px rgba(0, 0, 0, 0.28);
-    -o-box-shadow: 1px 0px 30px rgba(0, 0, 0, 0.28);
-    
+    -webkit-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
 
 }
 
@@ -71,9 +67,7 @@ body {
     background: -o-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* IE10+ */
     background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C */
-    
     padding: 0, 0, 20px, 0;
-
     width: 100%;
     height: 12%;
 
@@ -124,6 +118,7 @@ body {
     border-color: rgb(59,103,158);
     border-width: 3px;
     color: white;
+    
 
     }
 
@@ -145,14 +140,23 @@ body {
     background: -o-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* IE10+ */
     background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C */
-    
     padding: 0, 0, 20px, 0;
-    width: 100.3%;
-    height: 12%;
-    margin-top: -2.2%;
+    width: 100%;
+    height: 13%;
+    margin-top: -3%;
     border-right: 1px thick rgb(59,103,158);
     border-bottom: 1px thick rgb(59,103,158);
     border-top: 1px thick rgb(59,103,158);
 
 
 }
+
+#winbottom img {
+
+    float: left;
+    width: 12%;
+    margin-left: 42%;
+    margin-top: 2%;
+
+}
+

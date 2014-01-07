@@ -140,19 +140,36 @@ var popup = {
 
         var url = ajax.getAttribute("href");
 
-        new AjaxCon(url, function (data) {
+        //var req = new AjaxCon(url, function (data) {
 
-            console.log(JSON.parse(data));
-        })
+        //    console.log(JSON.parse(data));
+        //})
 
-       //var req = new createCORSRequest('GET',url);
+        
 
-       ////if (req.readystate !== 1) {
+       var req = new createCORSRequest('GET',url);
 
-       ////    alert("hej");
-       // //}
+        //var make = new makeCorsRequest(url);
 
-       //var make = new makeCorsRequest(url);
+       if (req.readyState !== 4) {
+
+           var bottom = document.getElementById("winbottom");
+
+           var loadingpic = document.createElement("img");
+
+           loadingpic.setAttribute("src", "pics/ajax-loader.gif");
+
+           bottom.appendChild(loadingpic);
+
+       }
+
+       if (req.readyState == 4) {
+
+           var bottom = document.getElementById("winbottom");
+
+           bottom.innerHTML = "";
+
+       }
        
         popup.appendimg();
         
@@ -160,32 +177,32 @@ var popup = {
 
     appendimg: function () {
 
-        //detta är bara ett test tills vidare!!!!
+       // //detta är bara ett test tills vidare!!!!
 
-        var img = document.createElement("IMG");
+       // var img = document.createElement("IMG");
 
-        img.setAttribute("src", "pics/Penguins1.jpg");
+       // img.setAttribute("src", "pics/Penguins1.jpg");
 
-        img.id = "img";
+       // img.id = "img";
 
-        //hämtar ut conentdiven
+       // //hämtar ut conentdiven
 
-       var content = document.getElementById("contentdiv");
+       //var content = document.getElementById("contentdiv");
         
-       content.appendChild(img);
+       //content.appendChild(img);
 
-       var tehimage = document.getElementById("img");
+       //var tehimage = document.getElementById("img");
 
-       tehimage.onclick = function () {
+       //tehimage.onclick = function () {
 
-           var imgsrc = this.getAttribute("src");
+       //    var imgsrc = this.getAttribute("src");
 
-           var hutemel = document.getElementsByTagName("HTML")[0];
+       //    var hutemel = document.getElementsByTagName("HTML")[0];
 
-           hutemel.style.background = "url('" + imgsrc + "')";
+       //    hutemel.style.background = "url('" + imgsrc + "')";
 
-           //hutemel.style.backgroundSize = "cover";
-       }
+       //    //hutemel.style.backgroundSize = "cover";
+       //}
 
     }
 
