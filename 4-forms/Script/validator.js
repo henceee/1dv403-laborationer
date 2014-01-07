@@ -1,105 +1,161 @@
 
 var validator = {
 
-    init: function () {
+    firstname: function () {
 
-        //Hämtar ut input-fälten för för- och efternamn
+        //Hämtar ut input-fältet för förnamn
 
         var firstname = document.getElementById("firstname");
-        var lastname = document.getElementById("lastname");
-
-        //kollar om fälten för för-/efternamn är tomma.
         
-        if (firstname.value == "" || lastname.value =="") {
-
-            //Sätter isf en röd border på fälten.
-
-            firstname.style.border = "1px solid red";
-            lastname.style.border = "1px solid red";
-
-            //Hämtar ut labels för för-/efternamn.
-
-            var firstnamelabel = document.getElementsByClassName("firstname");
-            var lastnamelabel = document.getElementsByClassName("lastname");
-
-           //Sätter färgen på labeln till röd.
-
-            firstnamelabel[0].style.color = "red";
-            lastnamelabel[0].style.color = "red";
-
-            //Hämtar ut diven som input & label för förnamn ligger i och skriver ut medd.
-
-            var firstnamediv = document.getElementById("fn1");
-
-            firstnamediv.innerHTML = "<p>Fältet får inte lämnas tomt!<p>";
-            
-            //Hämtar ut diven som input & label för efternamn ligger i och skriver ut medd.
-
-            var lastnamediv = document.getElementById("ln");
-            lastnamediv.innerHTML = "<p>Fältet får inte lämnas tomt!<p>";
-            
-
-        }
 
         //Kopplar en eventhandlare till inputfältet för förnamn.
 
-        firstname.onkeyup = function (e) {
+        firstname.onblur = function (e) {
 
-            //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+            //kollar om fältet för förnamn är tomt.
 
-            this.style.border = "1px solid green";
-            var firstnamelabel = document.getElementsByClassName("firstname");
+            if (firstname.value == "") {
 
-            firstnamelabel[0].style.color = "green";
+                //Sätter isf en röd border på fälten.
 
-            var firstnamediv = document.getElementById("fn1");
+                firstname.style.border = "1px solid red";
 
-            firstnamediv.innerHTML = "";
-            
 
-            
+                //Hämtar ut labels för för-/efternamn.
+
+                var firstnamelabel = document.getElementsByClassName("firstname");
+
+
+                //Sätter färgen på labeln till röd.
+
+                firstnamelabel[0].style.color = "red";
+
+
+                //Hämtar ut diven som input & label för förnamn ligger i och skriver ut medd.
+
+                var firstnamediv = document.getElementById("fn1");
+
+                firstnamediv.innerHTML = "<p>Fältet får inte lämnas tomt!<p>";
+
+
+
+            } else {
+                //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+                this.style.border = "1px solid green";
+                var firstnamelabel = document.getElementsByClassName("firstname");
+
+                firstnamelabel[0].style.color = "green";
+
+                var firstnamediv = document.getElementById("fn1");
+
+                //tar bort felmeddelandet
+
+                firstnamediv.innerHTML = "";
+
+            }
+
+   
+            validator.lastname();
+
         }
+
+        
+
+    },
+
+    lastname: function () {
+
+        //Hämtar ut input-fältet för efternamn
+
+        var lastname = document.getElementById("lastname");
 
         //Kopplar en eventhanterare till inputfältet för efternamn.
 
-        lastname.onkeyup = function () {
-            
-            //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+        lastname.onblur = function () {
 
-            this.style.border = "1px solid green";
-            var lastnamelabel = document.getElementsByClassName("lastname");
+            //kollar om fältet för efternamn är tomt.
 
-            lastnamelabel[0].style.color = "green";
+            if (lastname.value == "") {
 
-            var lastnamediv = document.getElementById("ln");
+                //Sätter isf en röd border på fälten.
 
-            lastnamediv.innerHTML = "";
 
-            
+                lastname.style.border = "1px solid red";
+
+                //Hämtar ut labels för efternamn.
+
+                var lastnamelabel = document.getElementsByClassName("lastname");
+
+                //Sätter färgen på labeln till röd.
+
+                lastnamelabel[0].style.color = "red";
+
+
+                //Hämtar ut diven som input & label för efternamn ligger i och skriver ut medd.
+
+                var lastnamediv = document.getElementById("ln");
+                lastnamediv.innerHTML = "<p>Fältet får inte lämnas tomt!<p>";
+
+
+            } else {
+                //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+
+                this.style.border = "1px solid green";
+                var lastnamelabel = document.getElementsByClassName("lastname");
+
+                lastnamelabel[0].style.color = "green";
+
+                var lastnamediv = document.getElementById("ln");
+
+                //tar bort felmeddelandet
+                [0]
+                lastnamediv.innerHTML = "";
+
+            }
+
         }
 
-        //Hämtar ut inputfältet för postnummer
+        
+        validator.zipcode();
+    },
+
+    zipcode: function () {
 
         var zipcode = document.getElementById("zipcode");
-        
-        //var reg = new RegExp(/^[0-9]{5}$/);
 
-        if (zipcode.value !== reg) {
 
-            //..
+        zipcode.onblur = function () {
+
+            //var regall =/^\w{2}?\s?[0-9]{3}?\s?[-]?[0-9]{2}||[0-9]{5}$/
+
+            //JÄVLA REGEX SVÄLJER JU VAD FAN SOM HELST -.-
+
+            //console.log(zipcode.value);
+
+            //console.log(regall.test(zipcode.value));
+
+            //if (regall.test(zipcode.value)) {
+                
+            //    var zipstr = zipcode.value;
+
+            //    //zipcode.value = zipstr.replace(/^\s?[-]?$/, "");
+
+            //    console.log("mellanslag och hyphen: " + /^\s*?$\gi/.test(zipstr));
+            //}
+            
+            console.log(zipcode.value);
+            if (zipcode.value == "") {
+
+                var ziplabel = document.getElementsByClassName("zipcode")[0];
+
+                console.log(ziplabel);
+
+                ziplabel.style.color = "red";
+
+                zipcode.style.border = "1px solid red";
+            }
         }
-       
-        if (zipcode.value == reg) {
+    },
+};
 
-            //...
-
-        }
-
-        
-
-        
-    }
-
-}
-
-window.onload = validator.init;
+window.onload = validator.firstname;
