@@ -86,8 +86,6 @@ var popup = {
 
         closebutton.setAttribute("value", "x");
 
-        //closebutton.innerHTML = "x";
-
         closebuttondiv.appendChild(closebutton);
 
         wintop.appendChild(closebuttondiv);
@@ -128,11 +126,25 @@ var popup = {
             
         }
 
-        popup.getInfo(); 
+            var bottom = document.getElementById("winbottom");
+
+            var loadingpic = document.createElement("img");
+
+            loadingpic.setAttribute("src", "pics/ajax-loader.gif");
+            
+            loadingpic.id = "loadingpic";
+
+            bottom.appendChild(loadingpic);
+
+            setTimeout(function () {popup.getInfo(); }, 3000);
+
     },
 
     getInfo: function () {
 
+        var bottom = document.getElementById("winbottom");
+        var loadinpic = document.getElementById("loadingpic");
+        bottom.removeChild(loadinpic);
         
         //hämtar ut länken runt bilden på desktopens "toolbar", som innehåller ajax-länken
 
@@ -140,44 +152,45 @@ var popup = {
 
         var url = ajax.getAttribute("href");
 
-        //var req = new AjaxCon(url, function (data) {
+        var xhr = null;
+        try {
+            xhr = new XMLHttpRequest();
+        } catch (error) {
+            try {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (error) {
+                throw new Error("No XHR object available");
+            }
+        }
 
-        //    console.log(JSON.parse(data));
-        //})
+        xhr.open("get", url, false);
+        xhr.send(null);
 
-        
+        if (xhr.readyState == 4) {
 
-       var req = new createCORSRequest('GET',url);
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                //console.log(xhr.responseText);
 
-        //var make = new makeCorsRequest(url);
+                var parsed = JSON.parse(xhr.responseText);
+            }
+            else {
+                console.log("Läsfel, status:" + xhr.status);
+            }
 
-       if (req.readyState !== 4) {
+        }
 
-           var bottom = document.getElementById("winbottom");
+        console.log(parsed);
 
-           var loadingpic = document.createElement("img");
-
-           loadingpic.setAttribute("src", "pics/ajax-loader.gif");
-
-           bottom.appendChild(loadingpic);
-
-       }
-
-       if (req.readyState == 4) {
-
-           var bottom = document.getElementById("winbottom");
-
-           bottom.innerHTML = "";
-
-       }
        
-        popup.appendimg();
+        popup.appendimg(parsed);
         
     },
 
-    appendimg: function () {
+    appendimg: function (parsed) {
 
-       // //detta är bara ett test tills vidare!!!!
+        console.log(parsed[0].URL);
+
+        // //detta är bara ett test tills vidare!!!!
 
        // var img = document.createElement("IMG");
 
