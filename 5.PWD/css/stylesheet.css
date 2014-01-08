@@ -1,7 +1,7 @@
 html {
 
 background: url("../pics/bg.jpg") no-repeat;
-background-size: cover;
+background-size:100%;
 
 }
 
@@ -13,9 +13,9 @@ body {
 
 #toolbar {
 
-    width: 105%;
+    width: 100.2%;
     height: 10%;  
-    margin-top: 63%;
+    margin-top: 61.5%;
     margin-left: -0.6%;
     background: rgb(125,126,125); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
@@ -28,6 +28,8 @@ body {
     -webkit-box-shadow: inset 0 0 30px #00f;
     -moz-box-shadow: inset 0 0 30px #00f;
     box-shadow: inset 0 0 30px #ffffff;
+    opacity: 0.9;
+    /*border-bottom: 5px rgba(125, 125, 125, 0.5);*/
 
 
 }
@@ -39,17 +41,25 @@ body {
         border: 1px solid white;
         padding: 1px;
         background-color: white;
+        position: absolute;
     }
 
 
 #popupdiv{
     
-    width: 50%;
-    height: 50%;
+    width: 800px;
+    height: 500px;
     margin-top: -60%;
     margin-left: 10%;
-    background-color: white;
-    border: 2px solid rgb(59,103,158);
+    /*background-color: white;*/
+    background: rgb(197,222,234); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(197,222,234,1)), color-stop(31%,rgba(138,187,215,1)), color-stop(100%,rgba(6,109,171,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C */
+    border: 3px solid rgb(59,103,158);
     -webkit-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
     -moz-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
     -o-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
@@ -94,6 +104,7 @@ body {
     margin-left: 5%;
     width: 6%;
     border: 1px solid white;
+    
 
 }
 
@@ -122,13 +133,7 @@ body {
 
     }
 
-#contentdiv {
 
-    width: 100%;
-    height: 80%;
-    overflow: scroll;
-
-}
 
 
 #winbottom {
@@ -141,9 +146,9 @@ body {
     background: -ms-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* IE10+ */
     background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C */
     padding: 0, 0, 20px, 0;
-    width: 100%;
-    height: 13%;
-    margin-top: -3%;
+    width: 100.1%;
+    height: 12%;
+    margin-top: -2%;
     border-right: 1px thick rgb(59,103,158);
     border-bottom: 1px thick rgb(59,103,158);
     border-top: 1px thick rgb(59,103,158);
@@ -154,9 +159,46 @@ body {
 #winbottom img {
 
     float: left;
-    width: 12%;
+    width: 8%;
     margin-left: 42%;
     margin-top: 2%;
 
 }
 
+
+#contentdiv {
+
+    width: 100%;
+    height: 80%;
+    overflow: scroll;
+    background-color: white;
+    
+
+}
+
+#contentdiv div{
+
+    margin-bottom: 50px;
+    
+
+}
+
+.imgbox {
+        
+    /*width: 95px;
+    height: 80px;*/
+    background-color: #AFB9D1;
+    float: left;
+    margin-left: 50px;
+    margin-top: 50px;
+
+}
+
+    .imgbox img {
+       
+        margin-top: 10%;
+        /*margin-left: 25%;*/
+        margin-right: 25%;
+        padding: 0 20% 0 25%;
+    
+    }

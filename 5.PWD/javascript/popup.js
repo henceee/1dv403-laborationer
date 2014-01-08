@@ -4,7 +4,6 @@
 var popup = {
     
     
-
     onclick: function() {
             
         //hämtar ut "toolbar"-diven 
@@ -14,6 +13,7 @@ var popup = {
         //Hämtar ut bilden via img tagen
 
         var img = toolbar.getElementsByTagName("IMG")[0];
+
 
         //Onclick till bilden på desktopens "toolbar" (längst ner). Gör en prevent default, anropar popupwin funktionen.
 
@@ -42,6 +42,7 @@ var popup = {
         var wintop = document.createElement("DIV");
         wintop.id = "popuptop";
 
+
         //skapar en div där en bild ska till popupfönstrets inforad (längst upp). Lägger in den i infobarens div-tag.
 
         var winpicdiv = document.createElement("DIV");
@@ -62,6 +63,7 @@ var popup = {
 
         var wintextdiv = document.createElement("DIV");
 
+
         //skapar en p-tag med texten "ImageViewer" och lägger in den info-radens div.
 
         var winptag = document.createElement("P");
@@ -73,6 +75,7 @@ var popup = {
         wintextdiv.appendChild(winptag);
 
         wintop.appendChild(wintextdiv);
+
 
         //skapar en stäng-knapp och lägger in den i info-radens div.
 
@@ -89,6 +92,7 @@ var popup = {
         closebuttondiv.appendChild(closebutton);
 
         wintop.appendChild(closebuttondiv);
+
 
         //lägger in wintop-diven i popupfönstrets div.
 
@@ -152,6 +156,8 @@ var popup = {
 
         var url = ajax.getAttribute("href");
 
+        //Skapar ett XMLHttpRequest, öppnar och skickar.
+
         var xhr = null;
         try {
             xhr = new XMLHttpRequest();
@@ -168,55 +174,129 @@ var popup = {
 
         if (xhr.readyState == 4) {
 
+            //om inget gått fel, tolka det som skickas tillbaks med JSON.
+
             if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-                //console.log(xhr.responseText);
+                
 
                 var parsed = JSON.parse(xhr.responseText);
             }
+                //annars skrivs felet ut.
+
             else {
                 console.log("Läsfel, status:" + xhr.status);
             }
-
         }
-
-        console.log(parsed);
-
-       
+               
         popup.appendimg(parsed);
         
     },
 
     appendimg: function (parsed) {
 
-        console.log(parsed[0].URL);
+        //Skapar en div till bilderna, med ID 0 (nollbaserat)
 
-        // //detta är bara ett test tills vidare!!!!
+        var imgbox = document.createElement("div");
 
-       // var img = document.createElement("IMG");
+        imgbox.className = "imgbox";
 
-       // img.setAttribute("src", "pics/Penguins1.jpg");
+        imgbox.id = "imgbox0";
 
-       // img.id = "img";
+        var boxwidth = [];
+        var boxheight = [];
 
-       // //hämtar ut conentdiven
+        //loopar igenom parsed arrayen och lägger till alla bredder och höjder i boxwidth resp. boxheight arrayen.
 
-       //var content = document.getElementById("contentdiv");
+        for (var h = 0; h < parsed.length; h += 1) {
+
+            boxwidth.push(parsed[h].thumbWidth);
+            boxheight.push(parsed[h].thumbHeight);
+        }
+
+        //sorterar dem i storleksordning
+
+        boxwidth.sort();
+        boxheight.sort();        
+
+        //snor den sista i den sorterade arrayen (den största höjden resp. bredden) och lägger till 20px och sätter det som storlek på samtliga divar runt bilderna.
+
+        imgbox.style.width = boxwidth.pop() + 20 + "px";
+        imgbox.style.height = boxheight.pop() + 20 + "px";
+
+        //hämtar ut contentdiven där bilderna ska läggas in.
+
+        var contentdiv = document.getElementById("contentdiv");
+
+        contentdiv.appendChild(imgbox);
+
+        for (var i = 0; i < parsed.length - 2; i += 1) {
+
+            //klonar bild-diven (imgbox) och sätter id till i+1 (finns redan en med ID 0, så börjar från 1)
+
+            var cloneimgbox = contentdiv.appendChild(imgbox.cloneNode());
+
+            cloneimgbox.id = "imgbox" + (i + 1);
+
+           //hämtar ut alla boxar med samma klassnamn....
+
+            var boxes = document.getElementsByClassName("imgbox");
+
+            
+        }
+
+        //...och loopar igenom dem.
+
+        for (var j = 0; j < boxes.length; j += 1) {
+
+
+            //Skapar en img tagg, sätter src, höjd och bredd utifrån respektive egenskap från respektive objekt i arrayen parsed
+
+            var images = document.createElement("img");
+
+            images.setAttribute("src", parsed[j].URL);
+
+            images.style.height = parsed[j].thumbHeight;
+
+            images.style.width = parsed[j].thumbWidth;
+
+            //justerar marginaler efter storlek på bilden, snyggare så =)
+
+            if (parsed[j].thumbWidth === 75) {
+
+                images.style.marginLeft = "10%";
+                images.style.padding = "0px";
+            }
+
+            if (parsed[j].thumbWidth === 67 || parsed[j].thumbWidth === 66) {
+
+                images.style.marginLeft = "15%";
+                images.style.padding = "0px";
+            }
+
+            if (parsed[j].thumbWidth === 33 || parsed[j].thumbWidth === 35) {
+
+                images.style.marginLeft = "35%";
+                images.style.padding = "0px";
+            }
+
+
+            //sätter en onklick på bilderna, vid klick sätts bakgrunden till den klickade bildens (this) src. 
+
+            images.onclick = function () {
+
+                var hutml = document.getElementsByTagName("html")[0];
+
+                console.log(hutml);
+
+                hutml.style.background = "url("+ this.getAttribute("src")+")";
+
+            }
+
+            
+            if (j <= 19) { boxes[j].appendChild(images); } 
+       
+        }
         
-       //content.appendChild(img);
-
-       //var tehimage = document.getElementById("img");
-
-       //tehimage.onclick = function () {
-
-       //    var imgsrc = this.getAttribute("src");
-
-       //    var hutemel = document.getElementsByTagName("HTML")[0];
-
-       //    hutemel.style.background = "url('" + imgsrc + "')";
-
-       //    //hutemel.style.backgroundSize = "cover";
-       //}
-
     }
 
 
