@@ -51,14 +51,7 @@ body {
     height: 500px;
     margin-top: -60%;
     margin-left: 10%;
-    /*background-color: white;*/
-    background: rgb(197,222,234); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(197,222,234,1)), color-stop(31%,rgba(138,187,215,1)), color-stop(100%,rgba(6,109,171,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C */
+    background-color: white;
     border: 3px solid rgb(59,103,158);
     -webkit-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
     -moz-box-shadow: -20px 0px 100px rgba(0, 0, 0, 0.28);
@@ -184,9 +177,9 @@ body {
 }
 
 .imgbox {
-        
-    /*width: 95px;
-    height: 80px;*/
+    
+    /* Bredd och höjd satt med javascript*/ 
+    
     background-color: #AFB9D1;
     float: left;
     margin-left: 50px;
@@ -197,7 +190,6 @@ body {
     .imgbox img {
        
         margin-top: 10%;
-        /*margin-left: 25%;*/
         margin-right: 25%;
         padding: 0 20% 0 25%;
     
