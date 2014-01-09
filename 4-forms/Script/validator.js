@@ -6,6 +6,7 @@ var validator = {
         //Hämtar ut input-fältet för förnamn
 
         var firstname = document.getElementById("firstname");
+
         
 
         //Kopplar en eventhandlare till inputfältet för förnamn.
@@ -18,39 +19,45 @@ var validator = {
 
                 //Sätter isf en röd border på fälten.
 
-                firstname.style.border = "1px solid red";
-
+                firstname.setAttribute("class", "redborder");
 
                 //Hämtar ut labels för för-/efternamn.
 
-                var firstnamelabel = document.getElementsByClassName("firstname");
-
-
+                var firstnamelabel = document.getElementsByClassName("firstname")[0];
+                
                 //Sätter färgen på labeln till röd.
 
-                firstnamelabel[0].style.color = "red";
-
+                firstnamelabel.setAttribute("class", "red firstname");
 
                 //Hämtar ut diven som input & label för förnamn ligger i och skriver ut medd.
 
                 var firstnamediv = document.getElementById("fn1");
 
-                firstnamediv.innerHTML = "<p>Fältet får inte lämnas tomt!<p>";
+                var fnp = document.createElement("p");
 
+                var fntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
+
+                fnp.appendChild(fntextnode);
+
+                firstnamediv.appendChild(fnp);
+
+                
 
 
             } else {
                 //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
-                this.style.border = "1px solid green";
-                var firstnamelabel = document.getElementsByClassName("firstname");
+                firstname.setAttribute("class", "greenborder");
 
-                firstnamelabel[0].style.color = "green";
+                var firstnamelabel = document.getElementsByClassName("firstname")[0];
 
-                var firstnamediv = document.getElementById("fn1");
-
+                firstnamelabel.setAttribute("class", "green firstname");
+                
                 //tar bort felmeddelandet
+                
+                    firstnamediv.removeChild(fntextnode);
+                
+                
 
-                firstnamediv.innerHTML = "";
 
                 var name = firstname.value;
                 
@@ -82,36 +89,47 @@ var validator = {
 
                 //Sätter isf en röd border på fälten.
 
-                lastname.style.border = "1px solid red";
+                lastname.setAttribute("class", "redborder");
 
-                //Hämtar ut labels för efternamn.
 
-                var lastnamelabel = document.getElementsByClassName("lastname");
+                var lastnamelabel = document.getElementsByClassName("lastname")[0];
 
                 //Sätter färgen på labeln till röd.
 
-                lastnamelabel[0].style.color = "red";
+                lastnamelabel.setAttribute("class", "red lastname");
 
 
                 //Hämtar ut diven som input & label för efternamn ligger i och skriver ut medd.
+               
+                //var lnp = document.createElement("p");
 
-                var lastnamediv = document.getElementById("ln");
-                lastnamediv.innerHTML = "<p>Fältet får inte lämnas tomt!<p>";
+                //var lastnamediv = document.getElementById("ln");
+
+                
+                //var lntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
+
+                //lnp.appendChild(lntextnode);
+                //lastnamediv.appendChild(lnp);
+                
 
 
             } else {
                 //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
 
-                this.style.border = "1px solid green";
-                var lastnamelabel = document.getElementsByClassName("lastname");
+                lastname.setAttribute("class", "greenborder");
 
-                lastnamelabel[0].style.color = "green";
+               
+                var lastnamelabel = document.getElementsByClassName("lastname")[0];
+
+                lastnamelabel.setAttribute("class", "green lastname");
 
                 var lastnamediv = document.getElementById("ln");
 
                 //tar bort felmeddelandet
-                [0]
-                lastnamediv.innerHTML = "";
+                
+                lastnamediv.removeChild(lntextnode);
+                
+                //lastnamediv.innerHTML = "";
 
                 var lname = lastname.value;
 

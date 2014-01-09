@@ -78,3 +78,26 @@ label {
     margin-top: -20px;
     margin-right: 15%;
 }
+
+.red {
+color: red;
+
+}
+
+.redborder {
+
+    border: 1px solid red;
+
+}
+
+.green {
+
+color: green;
+
+}
+
+.greenborder {
+
+    border: 1px solid green;
+
+}
