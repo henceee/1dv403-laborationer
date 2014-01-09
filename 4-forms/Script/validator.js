@@ -1,4 +1,4 @@
-
+"use strict"
 var validator = {
 
     firstname: function () {
@@ -52,10 +52,13 @@ var validator = {
 
                 firstnamediv.innerHTML = "";
 
+                var name = firstname.value;
+                
+
             }
 
    
-            validator.lastname();
+            validator.lastname(firstname.value);
 
         }
 
@@ -63,7 +66,7 @@ var validator = {
 
     },
 
-    lastname: function () {
+    lastname: function (firstname) {
 
         //Hämtar ut input-fältet för efternamn
 
@@ -78,7 +81,6 @@ var validator = {
             if (lastname.value == "") {
 
                 //Sätter isf en röd border på fälten.
-
 
                 lastname.style.border = "1px solid red";
 
@@ -111,51 +113,137 @@ var validator = {
                 [0]
                 lastnamediv.innerHTML = "";
 
+                var lname = lastname.value;
+
+               
+
             }
 
+            validator.zipcode(firstname, lastname.value);
         }
 
         
-        validator.zipcode();
     },
 
-    zipcode: function () {
+    zipcode: function (firstname, lastname) {
 
         var zipcode = document.getElementById("zipcode");
 
 
         zipcode.onblur = function () {
 
-            //var regall =/^\w{2}?\s?[0-9]{3}?\s?[-]?[0-9]{2}||[0-9]{5}$/
-
-            //JÄVLA REGEX SVÄLJER JU VAD FAN SOM HELST -.-
-
-            //console.log(zipcode.value);
-
-            //console.log(regall.test(zipcode.value));
-
-            //if (regall.test(zipcode.value)) {
+            var regall = /^(\w{2}\s?)?\d{3}(\s|[-])?\d{2}$/;
                 
-            //    var zipstr = zipcode.value;
+            if (regall.test(zipcode.value)) {
 
-            //    //zipcode.value = zipstr.replace(/^\s?[-]?$/, "");
-
-            //    console.log("mellanslag och hyphen: " + /^\s*?$\gi/.test(zipstr));
-            //}
-            
-            console.log(zipcode.value);
-            if (zipcode.value == "") {
-
+                var zip = zipcode.value.replace(/se|-|\s/gi, "");
+                
                 var ziplabel = document.getElementsByClassName("zipcode")[0];
 
-                console.log(ziplabel);
+                ziplabel.style.color = "green";
+
+                zipcode.style.border = "1px solid green";
+
+                
+
+            } else  {
+
+                var ziplabel = document.getElementsByClassName("zipcode")[0];
 
                 ziplabel.style.color = "red";
 
                 zipcode.style.border = "1px solid red";
             }
+
+            validator.email(firstname, lastname, zipcode.value);
         }
+        
     },
+
+    email: function (firstname, lastname, zipcode) {
+
+        var email = document.getElementById("email");
+
+        email.onblur = function () {
+
+            var emailreg = /^(?!\.)(\w|-|\.){1,64}(?!\.)@(?!\.)[-.a-zåäö0-9]{4,253}$/;
+
+            if (emailreg.test(email.value)) {
+
+                email.style.border = "1px solid green";
+
+                var emaillabel = document.getElementsByClassName("email")[0];
+
+                emaillabel.style.color = "green";
+
+                var mail = email.value;
+
+                
+
+            } else {
+                   email.style.border = "1px solid red";
+
+                    var emaillabel = document.getElementsByClassName("email")[0];
+
+                    emaillabel.style.color = "red";
+            }
+
+            validator.pricemodel(firstname, lastname, zipcode, email.value);
+            //validator.confirmation(firstname, lastname, zipcode, email.value);
+         }
+        
+        
+    },
+
+    pricemodel: function (firstname, lastname, zipcode, email) {
+
+        var pricemodel = document.getElementById("pricemodel");
+
+        console.log(pricemodel);
+        pricemodel.onblur = function () {
+
+            var pricemod = pricemodel.value;
+
+            validator.confirmation(firstname, lastname, zipcode, email, pricemod);
+
+        }
+    
+    },
+
+   
+
+    confirmation: function (firstname,lastname, zipcode, email) {
+
+        console.log(firstname);
+        console.log(lastname);
+        console.log(zipcode);
+        console.log(email);
+
+        var send = document.getElementById("send");
+
+        send.onclick = function () {
+
+            var body = document.getElementsByTagName("body")[0];
+
+            var popup = document.createElement("div");
+
+            popup.id = popup;
+
+        }
+
+        //console.log(send);
+
+        //var body = document.getElementsByTagName("body")[0];
+
+        
+
+    }
+
+        
+
+    
+
+
 };
 
 window.onload = validator.firstname;
