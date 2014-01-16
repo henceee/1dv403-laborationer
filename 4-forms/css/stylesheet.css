@@ -93,8 +93,8 @@ height: 10%;
 width: 50%;
 background-color: #FBFBFB;
 border: 2px solid gray;
-margin-left: 40%;   
-margin-top: -22%;
+margin-left: 35%;   
+margin-top: -15%;
 float: left;
 
 -webkit-box-shadow: 1px 1px 30px 0px rgba(50, 50, 50, 0.5);
@@ -203,7 +203,7 @@ padding: 10px 20px 10px 20px;
 
 #confirmbutton {
 
-margin-top: -8%;
+margin-top: -7%;
 margin-left: 80%;
 margin-right: 40px;
 float: right;
