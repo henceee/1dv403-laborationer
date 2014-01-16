@@ -1,28 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="SV">     
 
-   <head> 
+   <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta charset="UTF-8" />
         <title> Validator</title>
         <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
     </head>
 
     <body>
-
         <div id="payment">
         <h1>Fyll I din betalningsplan</h1>
         
         <form id="personaldata" method="post" action="http://voyager.lnu.se/tekinet/kurser/dtt/wp_webbteknik/process_form.php">
 
-            
-                
-                
-
                 <label class="firstname">Förnamn</label> 
                 <br />
                 <input id="firstname" type="text" name="firstname" /> <div id="fn1"></div>
-                <br />
-                                            
+                <br />                                            
 
                 <label class="lastname">Efternamn</label>
                 <br />
@@ -40,20 +35,22 @@
                 <br />
                 <br />
 
-                <label>Välj Prismodell</label>
+                <label class="pricemodel">Välj Prismodell</label>
                 <br />
                 <select id="pricemodel">
-                    <option id="pricemod">Låg</option>
+                    <option> Låg</option>
+                    <option>Mellan </option>
+                    <option>Hög</option>
                 </select>
                 <br />
                 <br />
                 
-                <input id="send" type="button" value="Genomför Köp"/>
+                <input id="send" type="submit" value="Genomför Köp"/>
 
         </form>
         </div>
 
-       <script src="Script/validator.js" charset="UTF-8" lang="sv"></script>
-    </body>
+       <script src="Script/validator.js" type="text/javascript" lang="sv" charset="charset"></script>
+    </body> 
 
 </html>

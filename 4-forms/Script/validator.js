@@ -1,51 +1,83 @@
-"use strict"
+ï»¿"use strict"
+
 var validator = {
+
+    createptag: function () {
+
+        var form = document.getElementById("personaldata");
+
+        form.onsubmit = function () {
+
+            return false;
+        }
+
+        var firstnamediv = document.getElementById("fn1");
+
+        var fnp = document.createElement("p");
+
+        fnp.id = "fnp";
+
+        firstnamediv.appendChild(fnp);
+
+        var lastnamediv = document.getElementById("ln");
+
+        var lnp = document.createElement("p");
+
+        lnp.id = "lnp";
+
+        lastnamediv.appendChild(lnp);
+
+        validator.firstname();
+
+    },
 
     firstname: function () {
 
-        //Hämtar ut input-fältet för förnamn
+
+        //HÃ¤mtar ut input-fÃ¤ltet fÃ¶r fÃ¶rnamn
 
         var firstname = document.getElementById("firstname");
 
-        
 
-        //Kopplar en eventhandlare till inputfältet för förnamn.
+        //Kopplar en eventhandlare till inputfÃ¤ltet fÃ¶r fÃ¶rnamn.
 
         firstname.onblur = function (e) {
 
-            //kollar om fältet för förnamn är tomt.
+            //kollar om fÃ¤ltet fÃ¶r fÃ¶rnamn Ã¤r tomt.
 
             if (firstname.value == "") {
 
-                //Sätter isf en röd border på fälten.
-
-                firstname.setAttribute("class", "redborder");
-
-                //Hämtar ut labels för för-/efternamn.
-
-                var firstnamelabel = document.getElementsByClassName("firstname")[0];
-                
-                //Sätter färgen på labeln till röd.
-
-                firstnamelabel.setAttribute("class", "red firstname");
-
-                //Hämtar ut diven som input & label för förnamn ligger i och skriver ut medd.
+                var fnp = document.getElementById("fnp");
 
                 var firstnamediv = document.getElementById("fn1");
 
-                var fnp = document.createElement("p");
+                //SÃ¤tter isf en rÃ¶d border pÃ¥ fÃ¤lten.
 
-                var fntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
+                firstname.setAttribute("class", "redborder");
+
+                //HÃ¤mtar ut labels fÃ¶r fÃ¶r-/efternamn.
+
+                var firstnamelabel = document.getElementsByClassName("firstname")[0];
+                
+                //SÃ¤tter fÃ¤rgen pÃ¥ labeln till rÃ¶d.
+
+                firstnamelabel.setAttribute("class", "red firstname");
+
+                var fnp = document.getElementById("fnp");
+
+                if (fnp.firstChild !== null) {
+                    fnp.removeChild(fnp.firstChild);
+                }
+                
+                var fntextnode = document.createTextNode("FÃ¤ltet fÃ¥r inte lÃ¤mnas tomt!");
+
+                fntextnode.id = "fntext";
 
                 fnp.appendChild(fntextnode);
 
-                firstnamediv.appendChild(fnp);
-
-                
-
 
             } else {
-                //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+                //SÃ¤tter grÃ¶n border pÃ¥ inputfÃ¤ltet om nÃ¥got skrivs in, samt grÃ¶n fÃ¤rg pÃ¥ labeln.
                 firstname.setAttribute("class", "greenborder");
 
                 var firstnamelabel = document.getElementsByClassName("firstname")[0];
@@ -53,17 +85,19 @@ var validator = {
                 firstnamelabel.setAttribute("class", "green firstname");
                 
                 //tar bort felmeddelandet
-                
-                    firstnamediv.removeChild(fntextnode);
-                
-                
 
+                var firstnamediv = document.getElementById("fn1");
 
+                var fnp = document.getElementById("fnp");
+                
+                if (fnp.firstChild !== null) {
+                    fnp.removeChild(fnp.firstChild);
+                }
+                
                 var name = firstname.value;
                 
 
             }
-
    
             validator.lastname(firstname.value);
 
@@ -75,46 +109,46 @@ var validator = {
 
     lastname: function (firstname) {
 
-        //Hämtar ut input-fältet för efternamn
+        //HÃ¤mtar ut input-fÃ¤ltet fÃ¶r efternamn
 
         var lastname = document.getElementById("lastname");
 
-        //Kopplar en eventhanterare till inputfältet för efternamn.
+        //Kopplar en eventhanterare till inputfÃ¤ltet fÃ¶r efternamn.
 
         lastname.onblur = function () {
 
-            //kollar om fältet för efternamn är tomt.
+            //kollar om fÃ¤ltet fÃ¶r efternamn Ã¤r tomt.
 
             if (lastname.value == "") {
 
-                //Sätter isf en röd border på fälten.
+                //SÃ¤tter isf en rÃ¶d border pÃ¥ fÃ¤lten.
 
                 lastname.setAttribute("class", "redborder");
 
-
                 var lastnamelabel = document.getElementsByClassName("lastname")[0];
 
-                //Sätter färgen på labeln till röd.
+                //SÃ¤tter fÃ¤rgen pÃ¥ labeln till rÃ¶d.
 
                 lastnamelabel.setAttribute("class", "red lastname");
 
+                //HÃ¤mtar ut diven som input & label fÃ¶r efternamn ligger i och skriver ut medd.
 
-                //Hämtar ut diven som input & label för efternamn ligger i och skriver ut medd.
+                var lnp = document.getElementById("lnp");
+
+                if (lnp.firstChild !== null) {
+
+                    lnp.removeChild(lnp.firstChild);
+                }
+                       
+                var lntextnode = document.createTextNode("FÃ¤ltet fÃ¥r inte lÃ¤mnas tomt!");
+
+                var lnp = document.getElementById("lnp");
+                lnp.appendChild(lntextnode);
                
-                //var lnp = document.createElement("p");
-
-                //var lastnamediv = document.getElementById("ln");
-
-                
-                //var lntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
-
-                //lnp.appendChild(lntextnode);
-                //lastnamediv.appendChild(lnp);
-                
-
+               
 
             } else {
-                //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+                //SÃ¤tter grÃ¶n border pÃ¥ inputfÃ¤ltet om nÃ¥got skrivs in, samt grÃ¶n fÃ¤rg pÃ¥ labeln.
 
                 lastname.setAttribute("class", "greenborder");
 
@@ -125,16 +159,14 @@ var validator = {
 
                 var lastnamediv = document.getElementById("ln");
 
-                //tar bort felmeddelandet
-                
-                lastnamediv.removeChild(lntextnode);
-                
-                //lastnamediv.innerHTML = "";
+                var lnp = document.getElementById("lnp");
+
+                if (lnp.firstChild !== null) {
+
+                    lnp.removeChild(lnp.firstChild);
+                }
 
                 var lname = lastname.value;
-
-               
-
             }
 
             validator.zipcode(firstname, lastname.value);
@@ -147,9 +179,8 @@ var validator = {
 
         var zipcode = document.getElementById("zipcode");
 
-
         zipcode.onblur = function () {
-
+      
             var regall = /^(\w{2}\s?)?\d{3}(\s|[-])?\d{2}$/;
                 
             if (regall.test(zipcode.value)) {
@@ -184,7 +215,7 @@ var validator = {
 
         email.onblur = function () {
 
-            var emailreg = /^(?!\.)(\w|-|\.){1,64}(?!\.)@(?!\.)[-.a-zåäö0-9]{4,253}$/;
+            var emailreg = /^(?!\.)(\w|-|\.){1,64}(?!\.)@(?!\.)[-.a-zÃ¥Ã¤Ã¶0-9]{4,253}$/;
 
             if (emailreg.test(email.value)) {
 
@@ -196,8 +227,6 @@ var validator = {
 
                 var mail = email.value;
 
-                
-
             } else {
                    email.style.border = "1px solid red";
 
@@ -207,22 +236,26 @@ var validator = {
             }
 
             validator.pricemodel(firstname, lastname, zipcode, email.value);
-            //validator.confirmation(firstname, lastname, zipcode, email.value);
+           
          }
-        
-        
+      
     },
 
     pricemodel: function (firstname, lastname, zipcode, email) {
 
         var pricemodel = document.getElementById("pricemodel");
 
-        console.log(pricemodel);
+       
         pricemodel.onblur = function () {
 
             var pricemod = pricemodel.value;
 
-            validator.confirmation(firstname, lastname, zipcode, email, pricemod);
+            var send = document.getElementById("send");
+
+            send.onclick = function (e) {
+
+                validator.confirmation(firstname, lastname, zipcode, email, pricemod);
+            }
 
         }
     
@@ -230,38 +263,272 @@ var validator = {
 
    
 
-    confirmation: function (firstname,lastname, zipcode, email) {
+    confirmation: function (firstname,lastname, zipcode, email, pricemod) {
 
-        console.log(firstname);
-        console.log(lastname);
-        console.log(zipcode);
-        console.log(email);
-
-        var send = document.getElementById("send");
-
-        send.onclick = function () {
 
             var body = document.getElementsByTagName("body")[0];
 
+            var inputs = document.getElementsByTagName("input");
+
+            var select = document.getElementsByTagName("select")[0];
+
+
+            for (var i = 0; i < inputs.length; i += 1) {
+
+                inputs[i].setAttribute("disabled", "disabled");
+            }
+            
+            select.setAttribute("disabled", "disabled");
+
+            var html = document.getElementsByTagName("html")[0];
+
+            html.setAttribute("class", "unclickable");
+            var payment = document.getElementById("payment");
+
+            payment.setAttribute("class", "unclickable");
+
             var popup = document.createElement("div");
+            popup.id = "popup";
 
-            popup.id = popup;
+            var popupupper = document.createElement("div");
 
+            popupupper.id = "popupupper";
+
+            var closebutton = document.createElement("input");
+
+            closebutton.setAttribute("type", "button");
+
+            closebutton.setAttribute("value", "x");
+
+            closebutton.onclick = function () {
+
+                body.removeChild(popup);
+
+                validator.closepopup(inputs, select);
+            }
+
+            popupupper.appendChild(closebutton);
+            
+            var popupheader = document.createElement("h1");
+
+            var headertext = document.createTextNode("VÃ¤nligen bekrÃ¤fta ditt kÃ¶p");
+
+            popupheader.appendChild(headertext);
+
+            popupupper.appendChild(popupheader);
+                   
+
+            popup.appendChild(popupupper);
+
+            var popupinfo = document.createElement("div");
+
+            popupinfo.id = "popupinfo";
+
+            var table = document.createElement("table");
+
+            var tr1 = document.createElement("tr");
+
+            var tdnamelabel = document.createElement("td");
+            
+            var namelabeltext = document.getElementsByClassName("firstname")[0].firstChild.textContent +":";
+
+            var namelabel = document.createTextNode(namelabeltext);
+
+            var namelabelp = document.createElement("p");
+
+            namelabelp.appendChild(namelabel);
+
+            tdnamelabel.appendChild(namelabelp);
+
+            var tdname = document.createElement("td");
+
+            var fname = document.createTextNode(firstname);
+
+            tdname.appendChild(fname);
+
+            tr1.appendChild(tdnamelabel);
+            tr1.appendChild(tdname);
+
+            table.appendChild(tr1);
+
+            var tr2 = document.createElement("tr");
+
+            var tdLnamelabel = document.createElement("td");
+
+            var Lnamelabeltext = document.getElementsByClassName("lastname")[0].firstChild.textContent +":";
+
+            var Lnamelabel = document.createTextNode(Lnamelabeltext);
+
+            var Lnamelabelp = document.createElement("p");
+
+            Lnamelabelp.appendChild(Lnamelabel);
+
+            tdLnamelabel.appendChild(Lnamelabelp);
+
+            tr2.appendChild(tdLnamelabel);
+
+            var tdLname = document.createElement("td");
+
+            var lname = document.createTextNode(lastname);
+
+            tdLname.appendChild(lname);
+
+            tr2.appendChild(tdLname);
+
+            table.appendChild(tr2);
+
+            var tr3 = document.createElement("tr");
+
+            var tdziplabel = document.createElement("td");
+
+            var ziplabeltext = document.getElementsByClassName("zipcode")[0].firstChild.textContent+":";
+
+            var ziplabel = document.createTextNode(ziplabeltext);
+
+            var ziplabelp = document.createElement("p");
+
+            ziplabelp.appendChild(ziplabel);
+
+            tdziplabel.appendChild(ziplabelp);
+            tr3.appendChild(tdziplabel);
+
+            var tdzip = document.createElement("td");
+            
+            var zip = document.createTextNode(zipcode);
+
+            tdzip.appendChild(zip);
+
+            tr3.appendChild(tdzip);
+
+            table.appendChild(tr3);
+            
+            popupinfo.appendChild(table);
+            
+            popup.appendChild(popupinfo);
+            
+            body.appendChild(popup);
+
+            var tr4 = document.createElement("tr");
+
+            var tdmaillabel = document.createElement("td");
+
+            var maillabeltext = document.getElementsByClassName("email")[0].firstChild.textContent + ":";
+            
+            var maillabel = document.createTextNode(maillabeltext);
+
+            var maillabelp = document.createElement("p");
+
+            maillabelp.appendChild(maillabel);
+
+            tdmaillabel.appendChild(maillabelp);
+            tr4.appendChild(tdmaillabel);
+
+            var tdmail = document.createElement("td");
+
+            var mail = document.createTextNode(email);
+
+            tdmail.appendChild(mail);
+
+            tr4.appendChild(tdmail);
+
+            table.appendChild(tr4);
+
+            var tr5 = document.createElement("tr");
+
+            var tdpricemodlabel = document.createElement("td");
+
+            var pricemodlabeltext = document.getElementsByClassName("pricemodel")[0].firstChild.textContent + ":";
+
+            pricemodlabeltext = pricemodlabeltext.replace("VÃ¤lj", "");
+
+            var pricemodlabel = document.createTextNode(pricemodlabeltext);
+
+            var pricemodelp = document.createElement("p");
+
+            pricemodelp.appendChild(pricemodlabel);
+
+            tdpricemodlabel.appendChild(pricemodelp);
+
+            tr5.appendChild(tdpricemodlabel);
+
+            var tdpricemod = document.createElement("td");
+
+            var pricemodel = document.createTextNode(pricemod);
+
+            tdpricemod.appendChild(pricemodel);
+
+            tr5.appendChild(tdpricemod);
+
+            table.appendChild(tr5);
+            
+            var cancelbutton = document.createElement("input");
+
+            cancelbutton.setAttribute("type", "button");
+
+            cancelbutton.setAttribute("value", "Avbryt");
+
+            cancelbutton.id = "cancelbutton";
+
+            cancelbutton.onclick = function () {
+
+                body.removeChild(popup);
+
+                validator.closepopup(inputs, select);
+
+            }
+
+            popup.appendChild(cancelbutton);
+
+            var confirmbutton = document.createElement("input");
+
+            confirmbutton.setAttribute("type", "button");
+
+            confirmbutton.setAttribute("value", "BekrÃ¤fta ditt kÃ¶p");
+
+            confirmbutton.id = "confirmbutton";
+
+            popup.appendChild(confirmbutton);
+
+            confirmbutton.onclick = function () {
+
+                var form = document.getElementById("personaldata");
+
+                form.submit();
+                
+
+            }
+                 
+        
+        },
+        
+    closepopup: function (inputs, select) {
+
+        var unclickable = document.getElementsByClassName("unclickable");
+
+        for (var j = 0; j < unclickable.length; j += 1) {
+
+            unclickable[j].setAttribute("class", "normal");
+
+            
         }
 
-        //console.log(send);
+        for (var k = 0; k < inputs.length; k += 1) {
 
-        //var body = document.getElementsByTagName("body")[0];
+            inputs[k].removeAttribute("disabled");
+        }
+
+        select.removeAttribute("disabled");
+
 
         
+        payment.setAttribute("class", "normal");
 
-    }
+    },
 
-        
-
-    
+   
+       
 
 
 };
 
-window.onload = validator.firstname;
+window.onload = validator.createptag;
