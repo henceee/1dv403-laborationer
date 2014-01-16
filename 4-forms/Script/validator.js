@@ -491,7 +491,7 @@ var validator = {
 
             confirmbutton.onclick = function () {
 
-                var form = document.getElementById("personaldata");
+                var send = document.getElementById("personaldata");
 
                 form.submit();
                 

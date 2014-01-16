@@ -12,22 +12,41 @@ var popup = {
 
         //Hämtar ut bilden via img tagen
 
+        //var imglink = document.getElementById("ajax");
+
         var img = toolbar.getElementsByTagName("IMG")[0];
 
 
         //Onclick till bilden på desktopens "toolbar" (längst ner). Gör en prevent default, anropar popupwin funktionen.
 
+       
         img.onclick = function (e) {
 
-            e.preventDefault();
+                e.preventDefault();
+                
+                //sparar undan onclick funktionen i en varibel och skickar med till popupwin.
 
-            popup.popupwin();
+                var onclick = img.onclick;
 
-        }
+                console.log(onclick);
+                                
+                popup.popupwin(img,onclick);
+            
+            }
+        
+       
         
     },
 
-    popupwin: function () {
+    popupwin: function (img,onclick) {
+
+        //sätter onclick till false och ser till att länken runt bilden returnerar false.
+
+        img.onclick = false;
+        var imglink = document.getElementById("ajax");
+        imglink.onclick = function () {
+            return false;
+        }
 
         //hämtar ut body-tagen
         var body = document.getElementsByTagName("body")[0];
@@ -127,6 +146,9 @@ var popup = {
 
             document.body.removeChild(popupdiv);
 
+            //återställer onclickfunktionen på bilden i toolbaren då fönstret stängts.
+
+            img.onclick = onclick;
             
         }
 
