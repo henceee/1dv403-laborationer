@@ -94,8 +94,6 @@ var validator = {
                     fnp.removeChild(fnp.firstChild);
                 }
                 
-                var name = firstname.value;
-                
 
             }
    
@@ -166,7 +164,6 @@ var validator = {
                     lnp.removeChild(lnp.firstChild);
                 }
 
-                var lname = lastname.value;
             }
 
             validator.zipcode(firstname, lastname.value);
