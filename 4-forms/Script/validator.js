@@ -2,6 +2,7 @@
 
 var validator = {
 
+
     createptag: function () {
 
         var form = document.getElementById("personaldata");

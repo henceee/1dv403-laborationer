@@ -9,10 +9,11 @@ var Memory = {
     cols: 4,
     rows: 4,
     checkArray: [],
+    clickcheck: 0,
 
     init: function () {
     
-        Memory.random = RandomGenerator.getPictureArray(4, 4);
+        Memory.random = RandomGenerator.getPictureArray(Memory.cols, Memory.rows);
         
         Memory.renderRows();
 
@@ -36,7 +37,7 @@ var Memory = {
                 piccounter += 1;
 
             }
-            memorytable.appendChild(trstring);
+            memorytable.appendChild(trstring);                                                                                          
         }
     },
 
@@ -52,29 +53,40 @@ var Memory = {
         trstring.appendChild(a);
 
         a.onclick = function (e) {
+            
+            if (Memory.clickcheck < 2) {
+            
+                count += 1;
+                e.preventDefault();
 
-            count += 1;
-            e.preventDefault();
-            Memory.flip(Memory.random[id], this);
+                Memory.flip(Memory.random[id], this);
+            }
+            
             
         }
     
     },
    
     flip: function (id, clickedATag) {
-                      
+        
+        Memory.clickcheck += 1;
+
         var clickedImg = clickedATag.getElementsByTagName("img")[0];
         clickedImg.setAttribute("src", "pics/" + id + ".png");
         Memory.checkArray.push(clickedImg);
-              
-        switch (Memory.checkArray.length % 2) {
+        
+       
+            switch (Memory.checkArray.length % 2) {
 
-            case 0:
-                setTimeout(function () { Memory.flipback(); }, 1000);
-            case 2:
-                setTimeout(function () { Memory.flipback(); }, 1000);
+                case 0:
+                    setTimeout(function () { Memory.flipback(); }, 1000);
+                case 2:
+                    setTimeout(function () { Memory.flipback(); }, 1000);
+
 
         }
+
+       
                 
     },
 
@@ -94,10 +106,13 @@ var Memory = {
 
                     Memory.checkArray[0].setAttribute("src", elm0src);
                     Memory.checkArray[1].setAttribute("src", elm1src);
+                    /*Memory.checkArray[0].parentNode.onclick = null;
+                    Memory.checkArray[1].parentNode.onclick = null;*/
 
                 }
 
                 Memory.checkArray.splice(0, 2);
+                Memory.clickcheck = 0;
         
         Memory.checkifgameover()
     },
@@ -115,7 +130,7 @@ var Memory = {
                     
                 }
 
-                if (imgagessrc.length === 16) {
+                if (imgagessrc.length === Memory.cols * Memory.rows) {
 
                     alert("Grattis, du klarade det på " + (count / 2) + " försök");
                     
