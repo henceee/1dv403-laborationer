@@ -2,8 +2,7 @@
 
 
 var popup = {
-    
-    
+
     onclick: function() {
             
         //hämtar ut "toolbar"-diven 
