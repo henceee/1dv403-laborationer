@@ -27,20 +27,7 @@ var popup = {
                 //sparar undan onclick funktionen i en varibel och skickar med till popupwin.
 
                 var onclick = img.onclick;
-
-                console.log(onclick);
-                                
-                popup.popupwin(img,onclick);
-            
-            }
-        
-       
-        
-    },
-
-    popupwin: function (img,onclick) {
-
-        //sätter onclick till false och ser till att länken runt bilden returnerar false.
+     
 
         img.onclick = false;
         var imglink = document.getElementById("ajax");
@@ -162,15 +149,8 @@ var popup = {
 
             bottom.appendChild(loadingpic);
 
-            setTimeout(function () {popup.getInfo(); }, 3000);
+        }
 
-    },
-
-    getInfo: function () {
-
-        var bottom = document.getElementById("winbottom");
-        var loadinpic = document.getElementById("loadingpic");
-        bottom.removeChild(loadinpic);
         
         //hämtar ut länken runt bilden på desktopens "toolbar", som innehåller ajax-länken
 
@@ -178,45 +158,14 @@ var popup = {
 
         var url = ajax.getAttribute("href");
 
-        //Skapar ett XMLHttpRequest, öppnar och skickar.
+        new Ajax(url, function callback(data) {
 
-        var xhr = null;
-        try {
-            xhr = new XMLHttpRequest();
-        } catch (error) {
-            try {
-                xhr = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (error) {
-                throw new Error("No XHR object available");
-            }
-        }
+            var recived = data;
 
-        xhr.open("get", url, false);
-        xhr.send(null);
+            var parsed = JSON.parse(recived);
+  
 
-        if (xhr.readyState == 4) {
-
-            //om inget gått fel, tolka det som skickas tillbaks med JSON.
-
-            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-                
-
-                var parsed = JSON.parse(xhr.responseText);
-            }
-                //annars skrivs felet ut.
-
-            else {
-                console.log("Läsfel, status:" + xhr.status);
-            }
-        }
-               
-        popup.appendimg(parsed);
-        
-    },
-
-    appendimg: function (parsed) {
-
-        //Skapar en div till bilderna, med ID 0 (nollbaserat)
+        //    Skapar en div till bilderna, med ID 0 (nollbaserat)
 
         var imgbox = document.createElement("div");
 
@@ -228,7 +177,7 @@ var popup = {
         var boxheight = [];
 
         //loopar igenom parsed arrayen och lägger till alla bredder och höjder i boxwidth resp. boxheight arrayen.
-
+       
         for (var h = 0; h < parsed.length; h += 1) {
 
             boxwidth.push(parsed[h].thumbWidth);
@@ -316,9 +265,15 @@ var popup = {
 
             
             if (j <= 19) { boxes[j].appendChild(images); } 
-       
-        }
         
+           
+        }
+        var bottom = document.getElementById("winbottom");     
+        var loadinpic = document.getElementById("loadingpic");
+        bottom.removeChild(loadinpic);
+
+
+        });
     }
 
 
