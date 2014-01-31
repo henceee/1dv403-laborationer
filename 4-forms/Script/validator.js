@@ -1,16 +1,25 @@
 ﻿"use strict"
 
+
+
 var validator = {
+      
 
+    validate: function () {
+        
+        var send = document.getElementById("send");
 
-    createptag: function () {
+        send.setAttribute("disabled", "disabled");
 
         var form = document.getElementById("personaldata");
+        
+        //Sätter return false på submit-knappen
 
         form.onsubmit = function () {
 
             return false;
         }
+        
 
         var firstnamediv = document.getElementById("fn1");
 
@@ -28,12 +37,6 @@ var validator = {
 
         lastnamediv.appendChild(lnp);
 
-        validator.firstname();
-
-    },
-
-    firstname: function () {
-
 
         //Hämtar ut input-fältet för förnamn
 
@@ -42,235 +45,244 @@ var validator = {
 
         //Kopplar en eventhandlare till inputfältet för förnamn.
 
-        firstname.onblur = function (e) {
+        firstname.onblur = function () {
 
             //kollar om fältet för förnamn är tomt.
 
-            if (firstname.value == "") {
+                if (firstname.value == "") {
 
-                var fnp = document.getElementById("fnp");
+                    var fnp = document.getElementById("fnp");
 
-                var firstnamediv = document.getElementById("fn1");
+                    var firstnamediv = document.getElementById("fn1");
 
-                //Sätter isf en röd border på fälten.
+                    //Sätter isf en röd border på fälten.
 
-                firstname.setAttribute("class", "redborder");
+                    firstname.setAttribute("class", "redborder");
 
-                //Hämtar ut labels för för-/efternamn.
+                    //Hämtar ut labels för för-/efternamn.
 
-                var firstnamelabel = document.getElementsByClassName("firstname")[0];
-                
-                //Sätter färgen på labeln till röd.
+                    var firstnamelabel = document.getElementsByClassName("firstname")[0];
 
-                firstnamelabel.setAttribute("class", "red firstname");
+                    //Sätter färgen på labeln till röd.
 
-                var fnp = document.getElementById("fnp");
+                    firstnamelabel.setAttribute("class", "red firstname");
 
-                if (fnp.firstChild !== null) {
-                    fnp.removeChild(fnp.firstChild);
+                    var fnp = document.getElementById("fnp");
+
+                        if (fnp.firstChild !== null) {
+                            fnp.removeChild(fnp.firstChild);
+                        }
+
+                    var fntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
+
+                    fntextnode.id = "fntext";
+
+                    fnp.appendChild(fntextnode);
+
+                    fname = "";
+                    fnamevalid = false;
+
+
+                } else {
+
+                    //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+                    firstname.setAttribute("class", "greenborder");
+
+                    var firstnamelabel = document.getElementsByClassName("firstname")[0];
+
+                    firstnamelabel.setAttribute("class", "green firstname");
+
+                    //tar bort felmeddelandet
+
+                    var firstnamediv = document.getElementById("fn1");
+
+                    var fnp = document.getElementById("fnp");
+
+                        if (fnp.firstChild !== null) {
+                            fnp.removeChild(fnp.firstChild);
+
+                            
+                        }
+
+                        fname = firstname.value;
+                        fnamevalid = true;                        
+                        
                 }
+                console.log(fnamevalid);
                 
-                var fntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
-
-                fntextnode.id = "fntext";
-
-                fnp.appendChild(fntextnode);
-
-
-            } else {
-                //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
-                firstname.setAttribute("class", "greenborder");
-
-                var firstnamelabel = document.getElementsByClassName("firstname")[0];
-
-                firstnamelabel.setAttribute("class", "green firstname");
-                
-                //tar bort felmeddelandet
-
-                var firstnamediv = document.getElementById("fn1");
-
-                var fnp = document.getElementById("fnp");
-                
-                if (fnp.firstChild !== null) {
-                    fnp.removeChild(fnp.firstChild);
-                }
-                
-
-            }
-   
-            validator.lastname(firstname.value);
+                validator.isvalid(send);
+               
 
         }
 
-        
+            //Hämtar ut input-fältet för efternamn
 
-    },
+            var lastname = document.getElementById("lastname");
 
-    lastname: function (firstname) {
+            //Kopplar en eventhanterare till inputfältet för efternamn.
 
-        //Hämtar ut input-fältet för efternamn
+            lastname.onblur = function () {
 
-        var lastname = document.getElementById("lastname");
+                //kollar om fältet för efternamn är tomt.
 
-        //Kopplar en eventhanterare till inputfältet för efternamn.
+                    if (lastname.value == "") {
 
-        lastname.onblur = function () {
+                        //Sätter isf en röd border på fälten.
 
-            //kollar om fältet för efternamn är tomt.
+                        lastname.setAttribute("class", "redborder");
 
-            if (lastname.value == "") {
+                        var lastnamelabel = document.getElementsByClassName("lastname")[0];
 
-                //Sätter isf en röd border på fälten.
+                        //Sätter färgen på labeln till röd.
 
-                lastname.setAttribute("class", "redborder");
+                        lastnamelabel.setAttribute("class", "red lastname");
 
-                var lastnamelabel = document.getElementsByClassName("lastname")[0];
+                        //Hämtar ut diven som input & label för efternamn ligger i och skriver ut medd.
 
-                //Sätter färgen på labeln till röd.
+                        var lnp = document.getElementById("lnp");
 
-                lastnamelabel.setAttribute("class", "red lastname");
+                            if (lnp.firstChild !== null) {
 
-                //Hämtar ut diven som input & label för efternamn ligger i och skriver ut medd.
+                                lnp.removeChild(lnp.firstChild);
+                            }
 
-                var lnp = document.getElementById("lnp");
+                        var lntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
 
-                if (lnp.firstChild !== null) {
+                        var lnp = document.getElementById("lnp");
 
-                    lnp.removeChild(lnp.firstChild);
-                }
-                       
-                var lntextnode = document.createTextNode("Fältet får inte lämnas tomt!");
+                        lnp.appendChild(lntextnode);
 
-                var lnp = document.getElementById("lnp");
-                lnp.appendChild(lntextnode);
-               
-               
+                        lname = "";
+                        lnamevalid = false;
 
-            } else {
 
-                //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
+                    } else {
 
-                lastname.setAttribute("class", "greenborder");
-               
-                var lastnamelabel = document.getElementsByClassName("lastname")[0];
+                        //Sätter grön border på inputfältet om något skrivs in, samt grön färg på labeln.
 
-                lastnamelabel.setAttribute("class", "green lastname");
+                        lastname.setAttribute("class", "greenborder");
 
-                var lastnamediv = document.getElementById("ln");
+                        var lastnamelabel = document.getElementsByClassName("lastname")[0];
 
-                var lnp = document.getElementById("lnp");
+                        lastnamelabel.setAttribute("class", "green lastname");
 
-                if (lnp.firstChild !== null) {
+                        var lastnamediv = document.getElementById("ln");
 
-                    lnp.removeChild(lnp.firstChild);
-                }
+                        var lnp = document.getElementById("lnp");
 
+                            if (lnp.firstChild !== null) {
+
+                                lnp.removeChild(lnp.firstChild);
+                            }
+
+                        lname = lastname.value;
+                        lnamevalid = true;
+                    }
+                    console.log(lnamevalid);
             }
 
-            validator.zipcode(firstname, lastname.value);
-        }
+            //hämtar ut och sätter en onblur för inputen för postnr
 
-        
-    },
+            var zipcode = document.getElementById("zipcode");
 
-    zipcode: function (firstname, lastname) {
+            zipcode.onblur = function () {
 
-        var zipcode = document.getElementById("zipcode");
+                var regall = /^(\w{2}\s?)?\d{3}(\s|[-])?\d{2}$/;
 
-        zipcode.onblur = function () {
-      
-            var regall = /^(\w{2}\s?)?\d{3}(\s|[-])?\d{2}$/;
-                
-            if (regall.test(zipcode.value)) {
+                //om postnr matchar formen 12345, 123 45, 123-45, SE123 45, SE123-45, SE 123 45, SE 123 45, SE 123-45 ....
 
-                var zip = zipcode.value.replace(/se|-|\s/gi, "");
-                
-                var ziplabel = document.getElementsByClassName("zipcode")[0];
+                    if (regall.test(zipcode.value)) {
 
-                ziplabel.setAttribute("class", "green zipcode");
-                
-                zipcode.setAttribute("class", "greenborder");                
+                        //...trimma bort bokstäver, mellanslag och bindenstreck.
 
-            } else  {
+                        zipcode.value = zipcode.value.replace(/se|-|\s/gi, "");
 
-                var ziplabel = document.getElementsByClassName("zipcode")[0];
+                        var ziplabel = document.getElementsByClassName("zipcode")[0];
 
-                ziplabel.setAttribute("class", "red zipcode ");
-                
-                zipcode.setAttribute("class", "redborder");
+                        ziplabel.setAttribute("class", "green zipcode");
 
-                zip = "";
-               
+                        zipcode.setAttribute("class", "greenborder");
+
+                        zip = zipcode.value;
+                        zipvalid = true;
+
+
+                    } else {
+
+                        //annars sätt en röd border och färg via css klass.
+
+                        var ziplabel = document.getElementsByClassName("zipcode")[0];
+
+                        ziplabel.setAttribute("class", "red zipcode ");
+
+                        zipcode.setAttribute("class", "redborder");
+
+                        zip = "";
+                        zipvalid = false;
+
+                    }                
+                    console.log(zipvalid);
+                    validator.isvalid(send);
             }
 
-            validator.email(firstname, lastname, zip);
-        }
-        
-    },
 
-    email: function (firstname, lastname, zipcode) {
 
-        var email = document.getElementById("email");
+            //hämtar ut och sätter en onblur för inputen för mail
 
-        email.onblur = function () {
+            var email = document.getElementById("email");
 
-            var emailreg = /^(?!\.)(\w|-|\.){1,64}(?!\.)@(?!\.)[-.a-zåäö0-9]{4,253}$/;
+            email.onblur = function () {
+                var emailreg = /^(?!\.)(\w|-|\.){1,64}(?!\.)@(?!\.)[-.a-zåäö0-9]{4,253}$/;
 
-            if (emailreg.test(email.value)) {
+                //Kollar så mailen matchar korrekt form.
 
-                email.setAttribute("class", "greenborder");
-                
+                    if (emailreg.test(email.value)) {
 
-                var emaillabel = document.getElementsByClassName("email")[0];
+                        email.setAttribute("class", "greenborder");
 
-                emaillabel.setAttribute("class", "email green");
 
-                var mail = email.value;
+                        var emaillabel = document.getElementsByClassName("email")[0];
 
-            } else {
-                   email.style.border = "1px solid red";
+                        emaillabel.setAttribute("class", "email green");
 
-                    var emaillabel = document.getElementsByClassName("email")[0];
+                        mail = email.value;
+                        mailvalid = true;
 
-                    emaillabel.style.color = "red";
 
-                    mail = "";
+                    } else {
+
+                        email.setAttribute("class", "redborder");
+
+                        var emaillabel = document.getElementsByClassName("email")[0];
+
+                        emaillabel.setAttribute("class", "email red");
+
+
+                        mail = "";
+                        mailvalid = false;
+                    }
+                    console.log(mailvalid);
+                    validator.isvalid(send);
             }
+        
 
-            validator.pricemodel(firstname, lastname, zipcode, mail);
-           
-         }
-      
-    },
+            var pricemodelinput = document.getElementById("pricemodel");
 
-    pricemodel: function (firstname, lastname, zipcode, email) {
+            pricemodelinput.onblur = function () {
 
-        var pricemodel = document.getElementById("pricemodel");
+                pricemod = pricemodelinput.value;
 
+            }
+        //console.log(fnamevalid);
+
+            
        
-        pricemodel.onblur = function () {
+            
+           send.onclick = function (e) {
+            
+               
 
-            var pricemod = pricemodel.value;
-
-            var send = document.getElementById("send");
-
-
-            send.onclick = function (e) {
-
-                validator.confirmation(firstname, lastname, zipcode, email, pricemod);
-                return false;
-
-
-            }
-
-        }
-    
-    },
-
-   
-
-    confirmation: function (firstname,lastname, zipcode, email, pricemod) {
-
+            //return false;
 
             var body = document.getElementsByTagName("body")[0];
 
@@ -278,320 +290,338 @@ var validator = {
 
             var select = document.getElementsByTagName("select")[0];
 
-            //gör alla inputfält oklickbara
 
-            for (var i = 0; i < inputs.length; i += 1) {
+               //gör alla inputfält oklickbara
 
-                inputs[i].setAttribute("disabled", "disabled");
-            }
-            
-            select.setAttribute("disabled", "disabled");
+                for (var i = 0; i < inputs.length; i += 1) {
 
-            //sätter bakgrundsfärgen till grå
+                    inputs[i].setAttribute("disabled", "disabled");
+                }
 
-            var html = document.getElementsByTagName("html")[0];
+                select.setAttribute("disabled", "disabled");
 
-            html.setAttribute("class", "unclickable");
-            var payment = document.getElementById("payment");
 
-            payment.setAttribute("class", "unclickable");
-            
-            //skapar div-tagen för popuprutan
+               //sätter bakgrundsfärgen till grå
 
-            var popup = document.createElement("div");
-            popup.id = "popup";
-            
-            //skapar en divtag i popuprutan för stängknapp och en h1a med texten "vänligen bekräfta ditt köp"
+                var html = document.getElementsByTagName("html")[0];
 
-            var popupupper = document.createElement("div");
+                html.setAttribute("class", "unclickable");
+                var payment = document.getElementById("payment");
 
-            popupupper.id = "popupupper";
-            
-            //skapar en stängknapp
+                payment.setAttribute("class", "unclickable");
 
-            var closebutton = document.createElement("input");
 
-            closebutton.setAttribute("type", "button");
+               //skapar div-tagen för popuprutan
 
-            closebutton.setAttribute("value", "x");
-            
-            //sätter en onclick som bort popupfönstret och tar bort "disabled" på inputfälten, sätter tbx bakgrundsfärgen (i closepopup, rad 570).
+                var popup = document.createElement("div");
+                popup.id = "popup";
 
-            closebutton.onclick = function () {
 
-                body.removeChild(popup);
+               //skapar en divtag i popuprutan för stängknapp och en h1a med texten "vänligen bekräfta ditt köp"
 
-                validator.closepopup(inputs, select);
-            }
+                var popupupper = document.createElement("div");
 
-            popupupper.appendChild(closebutton);
+                popupupper.id = "popupupper";
 
-            //Skapar headern
-            
-            var popupheader = document.createElement("h1");
 
-            var headertext = document.createTextNode("Vänligen bekräfta ditt köp");
+               //skapar en stängknapp
 
-            popupheader.appendChild(headertext);
+                var closebutton = document.createElement("input");
 
-            popupupper.appendChild(popupheader);
-              
-            popup.appendChild(popupupper);
+                closebutton.setAttribute("type", "button");
 
-            //Skapar en divtag för infon som användaren knappat in
+                closebutton.setAttribute("value", "x");
 
-            var popupinfo = document.createElement("div");
 
-            popupinfo.id = "popupinfo";
-            
-            //Skapar en tabell att stoppa in infon i
+               //sätter en onclick som bort popupfönstret och tar bort "disabled" på inputfälten, sätter tbx bakgrundsfärgen (i closepopup, rad 570).
 
-            var table = document.createElement("table");
-            
-            //Första raden för förnamn
+                    closebutton.onclick = function () {
 
-            var tr1 = document.createElement("tr");
+                        body.removeChild(popup);
 
-            var tdnamelabel = document.createElement("td");
-            
-            //hämtar ut labeln till inputfältet för förnamn, petar in texten i en p-tag och lägger in i en td.
-            
-            var namelabeltext = document.getElementsByClassName("firstname")[0].firstChild.textContent + ":";
+                        validator.closepopup(inputs, select);
+                    }
 
-            var namelabel = document.createTextNode(namelabeltext);
+              popupupper.appendChild(closebutton);
 
-            var namelabelp = document.createElement("p");
-            
-            if (firstname == "") {
 
-                namelabelp.setAttribute("class", "red");
+               //Skapar headern
 
-            }
+                var popupheader = document.createElement("h1");
 
-            namelabelp.appendChild(namelabel);
+                var headertext = document.createTextNode("Vänligen bekräfta ditt köp");
 
-            tdnamelabel.appendChild(namelabelp);
+                popupheader.appendChild(headertext);
 
-            //petar in namnet som användaren angivit i en td
+                popupupper.appendChild(popupheader);
 
-            var tdname = document.createElement("td");
+                popup.appendChild(popupupper);
 
-            var fname = document.createTextNode(firstname);
 
-            tdname.appendChild(fname);
+               //Skapar en divtag för infon som användaren knappat in
 
-            tr1.appendChild(tdnamelabel);
-            tr1.appendChild(tdname);
+                var popupinfo = document.createElement("div");
 
-            table.appendChild(tr1);
+                popupinfo.id = "popupinfo";
 
-            //Andra raden, för  efternamn
 
-            var tr2 = document.createElement("tr");
+               //Skapar en tabell att stoppa in infon i
 
-            var tdLnamelabel = document.createElement("td");
-            
-            //hämtar ut labeln till inputfältet för efternamn, petar in texten i en p-tag och lägger in i en td.
+                var table = document.createElement("table");
 
-            var Lnamelabeltext = document.getElementsByClassName("lastname")[0].firstChild.textContent +":";
 
-            var Lnamelabel = document.createTextNode(Lnamelabeltext);
+               //Första raden för förnamn
 
-            var Lnamelabelp = document.createElement("p");
+                var tr1 = document.createElement("tr");
 
-            Lnamelabelp.appendChild(Lnamelabel);
+                var tdnamelabel = document.createElement("td");
 
-            tdLnamelabel.appendChild(Lnamelabelp);
+               
+               //hämtar ut labeln till inputfältet för förnamn, petar in texten i en p-tag och lägger in i en td.
 
-            tr2.appendChild(tdLnamelabel);
 
-            //petar in efternamnet användaren har angett i en td
+                var namelabeltext = document.getElementsByClassName("firstname")[0].firstChild.textContent + ":";
 
-            var tdLname = document.createElement("td");
+                var namelabel = document.createTextNode(namelabeltext);
 
-            if (lastname == "") {
+                var namelabelp = document.createElement("p");
 
-                Lnamelabelp.setAttribute("class", "red");
+                    if (fname == "") {
 
-            }
+                        namelabelp.setAttribute("class", "red");
 
-            var lname = document.createTextNode(lastname);
+                    }
 
-            tdLname.appendChild(lname);
+                namelabelp.appendChild(namelabel);
 
-            tr2.appendChild(tdLname);
+                tdnamelabel.appendChild(namelabelp);
 
-            table.appendChild(tr2);
 
-            //tredje raden, för postnr.
+               //petar in namnet som användaren angivit i en td
 
-            var tr3 = document.createElement("tr");
+                var tdname = document.createElement("td");
 
-            var tdziplabel = document.createElement("td");
+                var fstname = document.createTextNode(fname);
 
-            //hämtar ut labeln till inputfältet för postnr, petar in texten i en p-tag och lägger in i en td.
+                tdname.appendChild(fstname);
 
-            var ziplabeltext = document.getElementsByClassName("zipcode")[0].firstChild.textContent+":";
+                tr1.appendChild(tdnamelabel);
+                tr1.appendChild(tdname);
 
-            var ziplabel = document.createTextNode(ziplabeltext);
+                table.appendChild(tr1);
 
-            var ziplabelp = document.createElement("p");
 
-            ziplabelp.appendChild(ziplabel);
+               //Andra raden, för  efternamn
 
-            tdziplabel.appendChild(ziplabelp);
-            tr3.appendChild(tdziplabel);
+                var tr2 = document.createElement("tr");
 
-            //petar in postnummret användaren har angett i en td
+                var tdLnamelabel = document.createElement("td");
 
-            var tdzip = document.createElement("td");
-            
-            if (zipcode == "") {
+               //hämtar ut labeln till inputfältet för efternamn, petar in texten i en p-tag och lägger in i en td.
 
-                ziplabelp.setAttribute("class", "red");
+                var Lnamelabeltext = document.getElementsByClassName("lastname")[0].firstChild.textContent + ":";
 
-            }
-            
-            var zip = document.createTextNode(zipcode);
+                var Lnamelabel = document.createTextNode(Lnamelabeltext);
 
-            tdzip.appendChild(zip);
+                var Lnamelabelp = document.createElement("p");
 
-            tr3.appendChild(tdzip);
+                Lnamelabelp.appendChild(Lnamelabel);
 
-            table.appendChild(tr3);
-            
-            //Fjärde raden, för email
+                tdLnamelabel.appendChild(Lnamelabelp);
 
-            var tr4 = document.createElement("tr");
+                tr2.appendChild(tdLnamelabel);
 
-            var tdmaillabel = document.createElement("td");
+               //petar in efternamnet användaren har angett i en td
 
-            //hämtar ut labeln till inputfältet för postnr, petar in texten i en p-tag och lägger in i en td.
+                var tdLname = document.createElement("td");
 
-            var maillabeltext = document.getElementsByClassName("email")[0].firstChild.textContent + ":";
-            
-            var maillabel = document.createTextNode(maillabeltext);
+                    if (lname == "") {
 
-            var maillabelp = document.createElement("p");
+                        Lnamelabelp.setAttribute("class", "red");
 
-            maillabelp.appendChild(maillabel);
-
-            tdmaillabel.appendChild(maillabelp);
-            tr4.appendChild(tdmaillabel);
-            
-            //petar in postnummret användaren har angett i en td
-
-            var tdmail = document.createElement("td");
-
-            var mail = document.createTextNode(email);
-
-            if (email == "") {
-
-                maillabelp.setAttribute("class", "red");
-
-            }
-
-            tdmail.appendChild(mail);
-
-            tr4.appendChild(tdmail);
-
-            table.appendChild(tr4);
-            
-            //femte raden, för prismodell
-
-            var tr5 = document.createElement("tr");
-
-            var tdpricemodlabel = document.createElement("td");
-
-            //hämtar ut labeln till inputfältet för postnr...
-
-            var pricemodlabeltext = document.getElementsByClassName("pricemodel")[0].firstChild.textContent + ":";
-            
-            //tar bort "Välj"  med replace metoden så att det bara står "prismodell"
-
-            pricemodlabeltext = pricemodlabeltext.replace("Välj", "");
-            
-            //... petar in texten i en p-tag och lägger in i en td.
-            var pricemodlabel = document.createTextNode(pricemodlabeltext);
-
-            var pricemodelp = document.createElement("p");
-
-            pricemodelp.appendChild(pricemodlabel);
-
-            tdpricemodlabel.appendChild(pricemodelp);
-
-            tr5.appendChild(tdpricemodlabel);
-            
-            //petar in postnummret användaren har angett i en td
-
-            var tdpricemod = document.createElement("td");
-
-            var pricemodel = document.createTextNode(pricemod);
-
-            tdpricemod.appendChild(pricemodel);
-
-            tr5.appendChild(tdpricemod);
-
-            //lägger in tabellen i diven "popupinfo" och stoppar in popupinfo i diven "popup", stoppar in "popup" i body.
-
-            table.appendChild(tr5);
-      
-            popupinfo.appendChild(table);
-
-            popup.appendChild(popupinfo);
-
-
-            //skapar en avrbytknapp
-
-            var cancelbutton = document.createElement("input");
-
-            cancelbutton.setAttribute("type", "button");
-
-            cancelbutton.setAttribute("value", "Avbryt");
-
-            cancelbutton.id = "cancelbutton";
-            
-            //sätter en onclick på avbrytknappen
-
-            cancelbutton.onclick = function () {
-
-                //tar bort popupfönstret och tar bort "disabled" på inputfälten, sätter tbx bakgrundsfärgen (i closepopup, rad 570).
-
-                body.removeChild(popup);
-
-                validator.closepopup(inputs, select);
-
-            }
-            
-
-            popup.appendChild(cancelbutton);
-
-            //skapar en avbrytknapp
-
-            var confirmbutton = document.createElement("input");
-
-            confirmbutton.setAttribute("type", "button");
-
-            confirmbutton.setAttribute("value", "Bekräfta ditt köp");
-
-            confirmbutton.id = "confirmbutton";
-
-            popup.appendChild(confirmbutton);
-
-            //sätter en onclick som skickar formulärdatan
-
-            confirmbutton.onclick = function () {
+                    }
                 
-                var form = document.getElementById("personaldata");
-                
-                form.submit();
+                var lstname = document.createTextNode(lname);
 
+                tdLname.appendChild(lstname);
+
+                tr2.appendChild(tdLname);
+
+                table.appendChild(tr2);
+
+               //tredje raden, för postnr.
+
+                var tr3 = document.createElement("tr");
+
+                var tdziplabel = document.createElement("td");
+
+               //hämtar ut labeln till inputfältet för postnr, petar in texten i en p-tag och lägger in i en td.
+
+                var ziplabeltext = document.getElementsByClassName("zipcode")[0].firstChild.textContent + ":";
+
+                var ziplabel = document.createTextNode(ziplabeltext);
+
+                var ziplabelp = document.createElement("p");
+
+                ziplabelp.appendChild(ziplabel);
+
+                tdziplabel.appendChild(ziplabelp);
+                tr3.appendChild(tdziplabel);
+
+               //petar in postnummret användaren har angett i en td
+
+                var tdzip = document.createElement("td");
+
+                    if (zip == "") {
+
+                        ziplabelp.setAttribute("class", "red");
+
+                    }
+
+                var zipc = document.createTextNode(zip);
+
+                tdzip.appendChild(zipc);
+
+                tr3.appendChild(tdzip);
+
+                table.appendChild(tr3);
+
+
+               //Fjärde raden, för email
+
+                var tr4 = document.createElement("tr");
+
+                var tdmaillabel = document.createElement("td");
+
+               //hämtar ut labeln till inputfältet för mail, petar in texten i en p-tag och lägger in i en td.
+
+                var maillabeltext = document.getElementsByClassName("email")[0].firstChild.textContent + ":";
+
+                var maillabel = document.createTextNode(maillabeltext);
+
+                var maillabelp = document.createElement("p");
+
+                maillabelp.appendChild(maillabel);
+
+                tdmaillabel.appendChild(maillabelp);
+                tr4.appendChild(tdmaillabel);
+
+
+               //petar in emailen användaren har angett i en td
+
+                var tdmail = document.createElement("td");
+
+                var mailz = document.createTextNode(mail);
+
+                    if (mail == "") {
+
+                        maillabelp.setAttribute("class", "red");
+
+                    }
+
+                tdmail.appendChild(mailz);
+
+                tr4.appendChild(tdmail);
+
+                table.appendChild(tr4);
+
+
+               //femte raden, för prismodell
+
+                var tr5 = document.createElement("tr");
+
+                var tdpricemodlabel = document.createElement("td");
+
+               //hämtar ut labeln till inputfältet för prismodell...
+
+                var pricemodlabeltext = document.getElementsByClassName("pricemodel")[0].firstChild.textContent + ":";
+
+               //tar bort "Välj"  med replace metoden så att det bara står "prismodell"
+
+                pricemodlabeltext = pricemodlabeltext.replace("Välj", "");
+
+               //... petar in texten i en p-tag och lägger in i en td.
+                var pricemodlabel = document.createTextNode(pricemodlabeltext);
+
+                var pricemodelp = document.createElement("p");
+
+                pricemodelp.appendChild(pricemodlabel);
+
+                tdpricemodlabel.appendChild(pricemodelp);
+
+                tr5.appendChild(tdpricemodlabel);
+
+               //petar in prismodellen användaren har angett i en td
+
+                var tdpricemod = document.createElement("td");
+
+                var pricemodeltext = document.createTextNode(pricemod);
+
+                tdpricemod.appendChild(pricemodeltext);
+
+                tr5.appendChild(tdpricemod);
+
+               //lägger in tabellen i diven "popupinfo" och stoppar in popupinfo i diven "popup", stoppar in "popup" i body.
+
+                table.appendChild(tr5);
+
+                popupinfo.appendChild(table);
+
+                popup.appendChild(popupinfo);
+
+               //skapar en avrbytknapp
+
+                var cancelbutton = document.createElement("input");
+
+                cancelbutton.setAttribute("type", "button");
+
+                cancelbutton.setAttribute("value", "Avbryt");
+
+                cancelbutton.id = "cancelbutton";
+
+               //sätter en onclick på avbrytknappen
+
+                    cancelbutton.onclick = function () {
+
+                        //tar bort popupfönstret och tar bort "disabled" på inputfälten, sätter tbx bakgrundsfärgen (i closepopup, rad 570).
+
+                        body.removeChild(popup);
+
+                        validator.closepopup(inputs, select);
+
+                    }
+
+                popup.appendChild(cancelbutton);
+
+
+               //skapar en avbrytknapp
+
+                var confirmbutton = document.createElement("input");
+
+                confirmbutton.setAttribute("type", "button");
+
+                confirmbutton.setAttribute("value", "Bekräfta ditt köp");
+
+                confirmbutton.id = "confirmbutton";
+
+                popup.appendChild(confirmbutton);
+
+               //sätter en onclick som skickar formulärdatan
+
+                    confirmbutton.onclick = function () {
+
+                        var form = document.getElementById("personaldata");
+
+                        form.submit();
+
+                    }
+
+                body.appendChild(popup);
             }
-
-            body.appendChild(popup);
-                 
         
-        },
+        
+    },
+
         
     closepopup: function (inputs, select) {
 
@@ -615,10 +645,27 @@ var validator = {
 
     },
 
-   
+    isvalid: function (send) {
        
+
+        if (fnamevalid && lnamevalid && zipvalid && mailvalid) {
+
+            send.removeAttribute("disabled");
+           
+
+        }
+
+        return;
+    }
+
+   
+ 
 
 
 };
 
-window.onload = validator.createptag;
+var fname,lname,zip,mail,pricemod;
+
+var fnamevalid,lnamevalid,zipvalid,mailvalid;
+
+window.onload = validator.validate;
