@@ -89,13 +89,19 @@ var popup = {
 
             closebuttondiv.id = "closebuttondiv";
 
+            var closebuttonA = document.createElement("a");
+
+            closebuttonA.setAttribute("href", "#");
+
             var closebutton = document.createElement("input");
 
             closebutton.setAttribute("type", "button");
 
             closebutton.setAttribute("value", "x");
 
-            closebuttondiv.appendChild(closebutton);
+            closebuttonA.appendChild(closebutton);
+
+            closebuttondiv.appendChild(closebuttonA);
 
             wintop.appendChild(closebuttondiv);
 
@@ -129,15 +135,15 @@ var popup = {
 
             //sätter en onclick funktion till stäng-knappen som tar bort diven
 
-            closebutton.onclick = function () {
+                closebutton.onclick = function () {
 
-                document.body.removeChild(popupdiv);
+                    document.body.removeChild(popupdiv);
 
-                //återställer onclickfunktionen på bilden i toolbaren då fönstret stängts.
+                    //återställer onclickfunktionen på bilden i toolbaren då fönstret stängts.
 
-                img.onclick = onclick;
+                    img.onclick = onclick;
 
-            }
+                }
 
             var bottom = document.getElementById("winbottom");
 
@@ -178,11 +184,11 @@ var popup = {
 
                 //loopar igenom parsed arrayen och lägger till alla bredder och höjder i boxwidth resp. boxheight arrayen.
 
-                for (var h = 0; h < parsed.length; h += 1) {
+                    for (var h = 0; h < parsed.length; h += 1) {
 
-                    boxwidth.push(parsed[h].thumbWidth);
-                    boxheight.push(parsed[h].thumbHeight);
-                }
+                        boxwidth.push(parsed[h].thumbWidth);
+                        boxheight.push(parsed[h].thumbHeight);
+                    }
 
                 //sorterar dem i storleksordning
 
@@ -201,45 +207,45 @@ var popup = {
 
                 content.appendChild(imgbox);
 
-                for (var i = 0; i < parsed.length - 1; i += 1) {
+                    for (var i = 0; i < parsed.length - 1; i += 1) {
 
-                    //klonar bild-diven (imgbox) och sätter id till i+1 (finns redan en med ID 0, så börjar från 1)
+                        //klonar bild-diven (imgbox) och sätter id till i+1 (finns redan en med ID 0, så börjar från 1)
 
-                    //var cloneimgbox = contentdiv.appendChild(imgbox.cloneNode());
+                        //var cloneimgbox = contentdiv.appendChild(imgbox.cloneNode());
 
-                    //cloneimgbox.id = "imgbox" + (i + 1);    
+                        //cloneimgbox.id = "imgbox" + (i + 1);    
 
-                    var cloneimgbox = imgbox.cloneNode();
+                        var cloneimgbox = imgbox.cloneNode();
 
-                    cloneimgbox.id = i + 1;
+                        cloneimgbox.id = i + 1;
 
-                    var images = document.createElement("img");
+                        var images = document.createElement("img");
 
-                    images.setAttribute("src", parsed[i].URL);
+                        images.setAttribute("src", parsed[i].URL);
 
-                    images.style.height = parsed[i].thumbHeight;
+                        images.style.height = parsed[i].thumbHeight;
 
-                    images.style.width = parsed[i].thumbWidth;
+                        images.style.width = parsed[i].thumbWidth;
 
-                    //justerar marginaler efter storlek på bilden, snyggare så =)
+                        //justerar marginaler efter storlek på bilden, snyggare så =)
 
-                    if (parsed[i].thumbWidth === 75) {
+                        if (parsed[i].thumbWidth === 75) {
 
-                        images.style.marginLeft = "10%";
-                        images.style.padding = "0px";
-                    }
+                            images.style.marginLeft = "10%";
+                            images.style.padding = "0px";
+                        }
 
-                    if (parsed[i].thumbWidth === 67 || parsed[i].thumbWidth === 66) {
+                        if (parsed[i].thumbWidth === 67 || parsed[i].thumbWidth === 66) {
 
-                        images.style.marginLeft = "15%";
-                        images.style.padding = "0px";
-                    }
+                            images.style.marginLeft = "15%";
+                            images.style.padding = "0px";
+                        }
 
-                    if (parsed[i].thumbWidth === 33 || parsed[i].thumbWidth === 35) {
+                        if (parsed[i].thumbWidth === 33 || parsed[i].thumbWidth === 35) {
 
-                        images.style.marginLeft = "35%";
-                        images.style.padding = "0px";
-                    }
+                            images.style.marginLeft = "35%";
+                            images.style.padding = "0px";
+                        }
 
 
                     //sätter en onklick på bilderna, vid klick sätts bakgrunden till den klickade bildens (this) src. 
