@@ -11,8 +11,6 @@ var popup = {
 
         //Hämtar ut bilden via img tagen
 
-        //var imglink = document.getElementById("ajax");
-
         var img = toolbar.getElementsByTagName("IMG")[0];
 
 
@@ -28,12 +26,12 @@ var popup = {
             var onclick = img.onclick;
 
 
-            img.onclick = false;
+                img.onclick = false;
 
-            var imglink = document.getElementById("ajax");
-            imglink.onclick = function () {
-                return false;
-            }
+                var imglink = document.getElementById("ajax");
+                imglink.onclick = function () {
+                    return false;
+                }
 
             //hämtar ut body-tagen
             var body = document.getElementsByTagName("body")[0];
@@ -229,23 +227,23 @@ var popup = {
 
                         //justerar marginaler efter storlek på bilden, snyggare så =)
 
-                        if (parsed[i].thumbWidth === 75) {
+                            if (parsed[i].thumbWidth === 75) {
 
-                            images.style.marginLeft = "10%";
-                            images.style.padding = "0px";
-                        }
+                                images.style.marginLeft = "10%";
+                                images.style.padding = "0px";
+                            }
 
-                        if (parsed[i].thumbWidth === 67 || parsed[i].thumbWidth === 66) {
+                            if (parsed[i].thumbWidth === 67 || parsed[i].thumbWidth === 66) {
 
-                            images.style.marginLeft = "15%";
-                            images.style.padding = "0px";
-                        }
+                                images.style.marginLeft = "15%";
+                                images.style.padding = "0px";
+                            }
 
-                        if (parsed[i].thumbWidth === 33 || parsed[i].thumbWidth === 35) {
+                            if (parsed[i].thumbWidth === 33 || parsed[i].thumbWidth === 35) {
 
-                            images.style.marginLeft = "35%";
-                            images.style.padding = "0px";
-                        }
+                                images.style.marginLeft = "35%";
+                                images.style.padding = "0px";
+                            }
 
 
                     //sätter en onklick på bilderna, vid klick sätts bakgrunden till den klickade bildens (this) src. 
@@ -263,7 +261,6 @@ var popup = {
                     cloneimgbox.appendChild(images);
 
                     content.appendChild(cloneimgbox);
-
                     
 
 
