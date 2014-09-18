@@ -231,7 +231,8 @@ var validator = {
 
             var email = document.getElementById("email");
 
-            email.onblur = function () {
+            email.onblur = function () {
+
                 var emailreg = /^(?!\.)(\w|-|\.){1,64}(?!\.)@(?!\.)[-.a-zåäö0-9]{4,253}$/;
 
                 //Kollar så mailen matchar korrekt form.
